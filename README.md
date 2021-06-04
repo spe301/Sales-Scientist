@@ -14,3 +14,6 @@ Here are some I could do...
 * VC firms
 * Life Insurance
 * Something related to fish/seafood suppliers
+
+
+At least for now I will start with Influencer Marketing with respect to fitness brands
