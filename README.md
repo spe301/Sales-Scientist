@@ -17,7 +17,7 @@ Here are some I could do...
 
 
 At least for now I will start with Influencer Marketing with respect to fitness brands
-I need to validate this idea but what I have in mind is to pull data from Youtube and Instagram and build two models. One to score an infulencer from 0-1 on how well they would represent our brand and predict the KPI's it would bring in.
+I need to validate this idea but what I have in mind is to pull data from Youtube and Instagram and build two models. One to score an infulencer from 0-1 on how well they would represent our brand and the other model to predict the KPI's it would bring in.
 
 Conditions that must be true within the company for this project to be of use...
 1. Must use and rely on Influencer Marketing
