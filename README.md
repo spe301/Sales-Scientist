@@ -31,3 +31,14 @@ c. their influencer marketing strategy is giving their brand a worse image
 1. read the blogs about Gymshark in my read list
 2. Identify real pain points at Gymshark, particularly in their Influencer Marketing. That being said their IM is killing it and other departments like Logistics are worth a look as there's likley more room for improvement
 3. look other as they likley have more room for improvement
+
+
+## areas within a company that Data Science can help...
+1. Human Rescources
+2. Marketing
+3. Finance
+4. Product Management
+5. Sales
+6. Supply Chain
+7. IT
+8. Customer Service
