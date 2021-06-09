@@ -4,41 +4,15 @@
 
 You you need to show business acumen, this means that you learn the business behind the domain you work in and build projects with respect to the businesses needs and constraints. The first step to a project that will actually get you hired is to identify a marketplace or specific niche/domain of business to apply Data Science to!
 
-Aim for domains you are either passionate about, interested in, or have big revenue.
-Here are some I could do...
-* fitness brands (ie. Gymshark)
-* Youtube content creators
-* Digital Marketing Agencies  
-* indie robot and drone makers
-* hip hop music venues
-* VC firms
-* Life Insurance
-* Something related to fish/seafood suppliers
+I have 6 solid project ideas and I'm having a hard time picking one, I'll start working on all 6 to get a flavor for them. After 5 days I'll pick 3 projects to abandon and 3 to keep working on, after 2 days I'll narrow down to 2, 5 days after that I'll narrow down to just one.
 
+## Here are my project ideas:
 
-At least for now I will start with Influencer Marketing with respect to fitness brands
-I need to validate this idea but what I have in mind is to pull data from Youtube and Instagram and build two models. One to score an infulencer from 0-1 on how well they would represent our brand and the other model to predict the KPI's it would bring in.
+For each project I will list the project, the sample client, the domain in paranthesis, and the department in brackets
 
-Conditions that must be true within the company for this project to be of use...
-1. Must use and rely on Influencer Marketing
-2. shouldn't have anything like this in place yet
-3. Must display some or all of the following pain points
-a. finding the right influencers to prtner with is time consuming
-b. their influencer's audiences don't match up with the target market very well
-c. their influencer marketing strategy is giving their brand a worse image
-
-## Here's What I'm going to focus on right now
-1. read the blogs about Gymshark in my read list
-2. Identify real pain points at Gymshark, particularly in their Influencer Marketing. That being said their IM is killing it and other departments like Logistics are worth a look as there's likley more room for improvement
-3. look other as they likley have more room for improvement
-
-
-## areas within a company that Data Science can help...
-1. Human Rescources
-2. Marketing
-3. Finance
-4. Product Management
-5. Sales
-6. Supply Chain
-7. IT
-8. Customer Service
+1. Lead Scoring for Hyros (high ticket software)[sales]
+2. KPI Analysis for Tiger Fitness's Youtube Channel (eCommerce brands that rely on Youtube for traffic)[marketing]
+3. Affiliate Inspection for Pollen (consumer services)[pr & marketing]
+4. mini Digital Marketing work product; provide insights for 4 different marketing strategies for Kobe Digital or My Spa Rocket (Marketing)[Marketing/Product management]
+5. Brand and Influencer scoring for Influencer Matchmaker (Marketing)[Marketing/Product Management]
+6. Deep Client Analysis for Creative Era Media (Marketing)[sales]
