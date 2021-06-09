@@ -14,5 +14,5 @@ For each project I will list the project, the sample client, the domain in paran
 2. KPI Analysis for Tiger Fitness's Youtube Channel (eCommerce brands that rely on Youtube for traffic)[marketing]
 3. Affiliate Inspection for Pollen (consumer services)[pr & marketing]
 4. mini Digital Marketing work product; provide insights for 4 different marketing strategies for My Spa Rocket (Marketing agencies)[Product Management]
-5. Brand and Influencer scoring for Gymshark (eCommerce brands that rely on Influencer Marketing)[Marketing]
+5. Brand and Influencer scoring for Gymshark (fitness brands)[Marketing]
 6. Deep Client Analysis for Creative Era Media (Marketing agencies)[sales & crm]
