@@ -13,6 +13,6 @@ For each project I will list the project, the sample client, the domain in paran
 1. Lead Scoring for Hyros (high ticket software)[sales]
 2. KPI Analysis for Tiger Fitness's Youtube Channel (eCommerce brands that rely on Youtube for traffic)[marketing]
 3. Affiliate Inspection for Pollen (consumer services)[pr & marketing]
-4. mini Digital Marketing work product; provide insights for 4 different marketing strategies for Kobe Digital or My Spa Rocket (Marketing agencies)[Product Management]
-5. Brand and Influencer scoring for Influencer Matchmaker (Marketing agencies)[Product Management]
+4. mini Digital Marketing work product; provide insights for 4 different marketing strategies for My Spa Rocket (Marketing agencies)[Product Management]
+5. Brand and Influencer scoring for Gymshark (eCommerce brands that rely on Influencer Marketing)[Marketing]
 6. Deep Client Analysis for Creative Era Media (Marketing agencies)[sales & crm]
