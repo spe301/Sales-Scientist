@@ -1,0 +1,30 @@
+# Business Case
+
+Gymshark is a Fitness apparel giant and went from a 19 year old making clothing in his mom's basement in 2012 to a $1.4 billion evaluation in 2021! Influencer Marketing was key to
+their success. Influencer Marketing is a system in which a brand pays an influencer to promote their products within their social media content. Most brands pay the influencers 
+they partner with by the post (influencer shoutouts) or with a small commission (affiliate marketing), this works but is not ideal because it creates mere short term relationships
+between brands and influencers. Not to mention, when the influencer's followers see such a wide range of products being promoted they begin to sense a false connection between the
+influencer and the product. Gymshark has a totally different approach, they only select influencers that are extremley passionate about the brand and sponsor these influencers with
+a full time salary and tons of free apparel. The influencers are then given posting requirements and create fitness related social media content that showcases their love for 
+Gymshark and how the brand is a part of their life. As this brand continues to grow Influencer Marketing is likley to remain in the marketing strategy and it will become 
+increasingly important that they are selecting the right people to be the face of their brand. Selecting the wrong influencers will slow company growth at best and hurt Gymshark's 
+image and reputation at worst, on the other end being a sponsored ambassador of a brand that is not a good fit will not be a good experience for the influencer either. Their needs 
+to be a faster way for brands and influencers to assess one another and find potential matches. This way brands can focus on their product and influencers can focus on their 
+content creation, and both parties can have a more fufiling relationship and generate more revenue as a result. Magic Link's match intelligence platform provides a similar service 
+but we want a solution that's designed specifically for fitness brands.
+
+# Requirements
+* accuratley assess and quantify how well an influencer matches with a brand within the fitness industry 
+* find reccomended brands or influencers to match with so that the end user can find opportunities they might not of been aware of otherwise
+* model explainability is strongly desired
+
+# Solution
+1. Data Collection pipeline (Youtube and Instagram for sure)
+2. Binary Classification model
+3. Visulizations that help improve model explainability
+
+#Feasability
+1. The Social media data will likley be easy to get ahold of, however there may be KPI's and other metrics that play an important role in assessing influencers that might be hard to
+collect
+2. Building and deploying the model is likley to be very feasable but building a model that can pick out good matches on it's own may present rescource challenges
+3. the visulizations shouldn't be too hard, especially for the classifier model
