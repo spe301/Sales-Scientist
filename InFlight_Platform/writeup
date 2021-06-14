@@ -1,0 +1,36 @@
+# Business Case
+My Spa Rocket is a Social Media Marketing Agency that specializes in Facebook ads, SMS marketing, and Lead generation for spas looking to get more customers in the door. The agency
+is dedicated to getting their clients results and has formulated a highly effictive strategy for doing so. The concern is that larger agencies, Power Digital Marketing for example,
+are building highly effective Machine Learning and Analytics platforms that allow the agencies to automate the process of picking the optimal marketing tactics and strategy unique
+to each client. This allows for faster delivery and in most cases higher ROI for the client. By specializing in the spa niche the agency has a mote in place, but a Machine Learning 
+and Analytics platform customized to the spa domain would keep them ahead of the curve provide that it is done well.
+
+Objective: Futureproof My Spa Rocket
+
+# Requirements
+* Predict the preformance of campaigns before they launch
+* Track the preformance of campaigns after they launch
+* Idenify the best platform to focus on for the individual client 
+* Compare different strategies against eachother within the platform for that particular client
+* model outputs and valuable findings from the data should be presented in a way that is easy for nontechnical marketing proffessionals to understand
+* model explainability is strongly desired
+* able to constantly pull new data and update models and visulizations as new data is introduced [how often?]
+prefferred...
+* Extract insights about the agency's client's customer bases. As well as the target market of spa visitors as a whole
+* give guidance on how to set parameters within the digital marketing strategy
+
+# Solution
+While the scope of this project is a bit broad, there will be 5 distinct componets.
+1. Social Media Data Collection Pipeline
+2. KPI analysis dashboard
+3. Platform Selection via classification model
+4. Strategy Selection via classification model
+5. Campaign results data collection pipeline
+6. Bonus. Strategy parameter setting algorithms
+
+# Feasability
+I will touch on the feasability of each part of this proposed solution
+1. getting ahold of SMS data is unlikley to be feasable, I've had a really hard time getting data from Facebook in the past but I can probably find a workaround. Instagram and 
+Snapchat will likley be pretty easy to access. The goal will be for this workproduct to collect data from Facebook, Instagram, and Snapchat.
+2. Building the Dashboard and Visulizations will be easy, but the data from step 1 must be valuable for the dashboard to be effective.
+3. 
