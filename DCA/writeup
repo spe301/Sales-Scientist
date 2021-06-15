@@ -19,3 +19,6 @@ clients in preperation for consultations they would have more clarity on how to 
 * I will need to embed the dashboard into a deployed web app so that it can work in tandem with the ml
 
 ## Soultion
+* An interactive dashboard that shows social media engagement of their clients
+* Euclidean Distance, or other distance formula, to compare the prospect to past clients and competitors
+* Bonus: connection to Facebook Ads API to show estimated campaign reach for the client, just so the user dosen't have to look this up and satay in one place (the app)
