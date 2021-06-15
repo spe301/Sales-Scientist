@@ -14,7 +14,31 @@ What if we could automate parts of the prospecting process and allow Hyros to cl
 clients?
 
 # Requirements
+* must quantify the likleyhood of conversion given a potential client
+* should estimate ACV (annual contract value) and calculate their LTV (lifetime value)
+* model explainability is needed for the pricing model, but is only preffered for the scoring
+* takes in data in the form of a spreadsheet 
 
 # Solution
+* a deployed web app 
+* binary classification model
+* regression model
+* simple algorithm to calculate LTV
 
-We can
+# Feasability
+* A lot of this data will come from Salesforce, this could be really easy but it could be really hard, I just don't know yet
+* I anticipate the ACV and LTV model to be more difficult than the scoring model
+
+# KPI's
+## model metrics
+* scoring model: f1 score. false negatives and false positives are equally bad but most prospects don't convert, this means our data is imbalanced, this means that accuracy is
+not a good metric.
+* ACV model: accuracy. I feel like Root Means Squared Error might be better but it is less interpretable to the end user than accuracy.
+
+## business metrics
+* closing ratio. If we can help the sales team focus on aquiring the customers that are more likley to convert than Hyros will close a higher percentage of their SQL's
+* Sales Cycle Length. If our model is good, it will automate a signifigant chunk of the vetting process, thus making the sales cycle faster. However, it must be noted that there
+is a human element, and there's a chance that this can't be speeded up because doing so may be too pushy on the customer. Even if this is the case, we can free up employees to 
+work on other tasks.
+* SQL-to-MQL conversion rate. Hyros's top priority is to step up their outbound outreach and get more sales qulaified leads (SQL's) they are already highly satisfied with 
+marketing qualified leads (MQL's), by increasing closing ratio this metric will naturally improve
