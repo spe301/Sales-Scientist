@@ -23,8 +23,18 @@ but we want a solution that's designed specifically for fitness brands.
 2. Binary Classification model
 3. Visulizations that help improve model explainability
 
-#Feasability
-1. The Social media data will likley be easy to get ahold of, however there may be KPI's and other metrics that play an important role in assessing influencers that might be hard to
-collect
+# Feasability
+1. The Social media data will likley be easy to get ahold of, however there may be KPI's and other metrics that play an important role in assessing influencers that might be hard 
+to collect
 2. Building and deploying the model is likley to be very feasable but building a model that can pick out good matches on it's own may present rescource challenges
 3. the visulizations shouldn't be too hard, especially for the classifier model
+
+# KPI's
+## model metrics
+Precision or F1. In this case having false positives (matches that are given a high score when it should be low) are worse than false having negatives
+
+## business metrics
+referral traffic, this means the influncer is driving traffic to the company. ROI of individual influencer, a model that selects the right influencers will have 
+a higher ROI from their campaigns. 
+
+# Technical requirements
