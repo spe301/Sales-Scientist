@@ -10,5 +10,42 @@ analytics dashboard Tiger Fitness could obtain insights that few other channels 
 key driver of revenue for Tiger Fitness and this would be a valuable area for them to apply Data Analytics. 
 
 # Requirements
+* interactive dashboard showcasing EDA portion of the project
+* EDA should focus to the relationship of youtube KPI's to the Business KPI's as well as click-through-rate (CTR)
+* predict percent viewed, audiance retention, subscriber growth, views, rewatches, and actions after viewing given a video idea
+* predict youtube ad revenue given a video idea
+* model explainability is preffered
 
 # Solution
+* The vast majority of data will be pulled from the Youtube API. I will probably have to store requested data from to a database
+* simple algorithm that predicts ad revenue given views. Machine Learning here would be overkill
+* 6 regression models of some sort, to predict the 6 other KPI's
+* Deployed web app with an embeded dashboard
+
+# Feasability
+* The data will be easy to collect 
+* The model deployment and dashboard will be very feasible as long as I steer clear of Deep Learning
+* The challenge here will be setting up a pipeline that allows the data to be updated constantly. I've seen a workaround for this problem that involves Docker and AWS, both of
+which scare me
+
+# KPI's
+## model metrics
+accuracy, MAE, RMSE, MSE
+* percent viewed:
+* audiance retention:
+* subscriber growth:
+* views:
+* rewatches:
+* actions after viewing: 
+
+## youtube metrics
+percent viewed, audiance retention, subscriber growth, views, rewatches
+
+## business metrics
+* actions after viewing
+* ad revenue
+
+# Technical requirements
+* no deep learning for latency reasons
+* Docker for ...
+* AWS for ...
