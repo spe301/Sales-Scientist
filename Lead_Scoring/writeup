@@ -42,3 +42,17 @@ is a human element, and there's a chance that this can't be speeded up because d
 work on other tasks.
 * SQL-to-MQL conversion rate. Hyros's top priority is to step up their outbound outreach and get more sales qulaified leads (SQL's) they are already highly satisfied with 
 marketing qualified leads (MQL's), by increasing closing ratio this metric will naturally improve
+
+# scrappy solution
+I've come to realize that this project is not feasible without buy in from Hyros because I would need their sales data to build this. That being said I can access the data from
+known Hyros customers. I can still do something with this data, here are my ideas
+1. create a distance algorithim to generate an 'avatar customer' quantify the difference between a prospect and the avatar cusomer
+2. create a data generating algorithm to simulate unclosed prospects to fill in the gap for this project. If I can get buy in then I can go back and use the real data
+
+# Technical Requirements
+* model efficiencency is key because the model will need to be able to run predictions on spreadsheets of data with dozens of rows
+
+# The Dataset
+* features representative of the type of business that known customers are (sector, product/service, financials) as well as Facebook presence, Youtube presence, and state at the
+time of purchasing Hyros
+* Data will be sourced from Salesforce CRM, Youtube API, and Facebook API
