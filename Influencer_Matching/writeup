@@ -6,9 +6,9 @@ they partner with by the post (influencer shoutouts) or with a small commission 
 between brands and influencers. Not to mention, when the influencer's followers see such a wide range of products being promoted they begin to sense a false connection between the
 influencer and the product. Gymshark has a totally different approach, they only select influencers that are extremley passionate about the brand and sponsor these influencers with
 a full time salary and tons of free apparel. The influencers are then given posting requirements and create fitness related social media content that showcases their love for 
-Gymshark and how the brand is a part of their life. As this brand continues to grow Influencer Marketing is likley to remain in the marketing strategy and it will become 
+Gymshark and how the brand is a part of their life. It may sound extreme but Gymshark sponsored influencers are rarely seen out of Gymshark in their videos! As this brand continues to grow Influencer Marketing is likley to remain in the marketing strategy and it will become 
 increasingly important that they are selecting the right people to be the face of their brand. Selecting the wrong influencers will slow company growth at best and hurt Gymshark's 
-image and reputation at worst, on the other end being a sponsored ambassador of a brand that is not a good fit will not be a good experience for the influencer either. Their needs 
+image and reputation at worst, on the other end being a sponsored ambassador of a brand that is not a good fit will not be a good experience for the influencer either. There needs 
 to be a faster way for brands and influencers to assess one another and find potential matches. This way brands can focus on their product and influencers can focus on their 
 content creation, and both parties can have a more fufiling relationship and generate more revenue as a result. Magic Link's match intelligence platform provides a similar service 
 but we want a solution that's designed specifically for fitness brands.
@@ -38,3 +38,6 @@ referral traffic, this means the influncer is driving traffic to the company. RO
 a higher ROI from their campaigns. 
 
 # Technical requirements
+
+# The Dataset
+* I will start by identifying influencers that have done well with Gymshark and identify which ones have lost their sponsorships and why. I need to develop a full understanding of what seperates them before I get too carried away with data collection. I do know that Youtube, Instagram, and Social Blade will be good data sources however. 

@@ -47,5 +47,8 @@ percent viewed, audiance retention, subscriber growth, views, rewatches
 
 # Technical requirements
 * no deep learning for latency reasons
-* Docker for ...
-* AWS for ...
+* Docker for running the data request script in a virtual machine rather than my computer
+* AWS for creating a database with unlimited access for storing the youtube data
+
+# The Dataset
+* Youtube API
