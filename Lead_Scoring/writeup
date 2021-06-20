@@ -18,6 +18,7 @@ clients?
 * should estimate ACV (annual contract value) and calculate their LTV (lifetime value)
 * model explainability is needed for the pricing model, but is only preffered for the scoring
 * takes in data in the form of a spreadsheet 
+* can't bog the end user with too many fields
 
 # Solution
 * a deployed web app 
