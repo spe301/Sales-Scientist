@@ -34,7 +34,7 @@ clients?
 ## model metrics
 * scoring model: f1 score. false negatives and false positives are equally bad but most prospects don't convert, this means our data is imbalanced, this means that accuracy is
 not a good metric.
-* ACV model: accuracy. I feel like Root Means Squared Error might be better but it is less interpretable to the end user than accuracy.
+* ACV model: Mean Absolute Error
 
 ## business metrics
 * closing ratio. If we can help the sales team focus on aquiring the customers that are more likley to convert than Hyros will close a higher percentage of their SQL's
