@@ -18,6 +18,12 @@ I am going to build a binary classification model that scores leads on a scale o
 ## Feasability
 This project must have buy in from Hyros to be able tobe  compleated. That being said, I can pull data from known Hyros customers. I can find customers of Anytrack.io, a rival product, as well as generate slightly different datapoints to simulate leads that didn't close. I can seek buy in from Hyros to get access to their internal data to make the project 100%. This is risky business because I don't know what I'll be left with if they don't like or want it. I am going to continue with the project as of now but I will have to be flexible moving forward. 
 
+## KPI's and metrics
+**Business KPI's**
+1. SQL closing rate; because Hyros is stepping up it's outbound outreach it is especially looking to increase closing rate from leads qualified by the sales team as opposed to the marketing team
+2.  Sales cycle length
+3.  closing ratio
+
 # Questions for Sales reps at Software companies
 1. If I were to make a lead scoring app for sales teams to use how would it need to work to be practical? About how many leads should it be able to score at one time? Does it need to be fast or it it okay is it runs a bit slower? Do you think the users would be more likley to use desktops or laptops?
 3. As a [title] at [company] What do you think are the main factors that go into selling a high ticket software product? What attributes do you look at in a prospect?
