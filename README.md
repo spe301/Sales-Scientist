@@ -1,14 +1,8 @@
-# Spencer
+# Lead Scoring for Hyros
 
-## How to make a Data Science project that employers actually give a s*it about...
+## Business Case
+Hyros is a software that allows advertisers and digital marketers to accuratley attribute the return on their advertising (ROAS) accross platforms. The company has been delivering amazing results for their customers who mostly come in by word of mouth. However they are looking towards outbound outreach to scale higher and are looking to hire more salespeople. Hyros wants to grow and it can only scale so high with word of mouth so it's ramping up outbound strategies. The goal here is to see if we can make the sales process more efficient, this way the sales team can retain or increase it's closing rate and Hyros won't need to make as many hires; 1) save time, 2) save money, 3) more closing = more money.
 
-You you need to show business acumen, this means that you learn the business behind the domain you work in and build projects with respect to the businesses needs and constraints. The first step to a project that will actually get you hired is to identify a marketplace or specific niche/domain of business to apply Data Science to!
+## The problem
+Finding the right prospects is time consuming. This is a common problem in sales and marketing, however this especially is an issue for Hyros because they are selective about the customers they choose to onboard. How much would it suck to expand a sales team only to have them bring in customers that are unualified or unlikley to benefit from the service? a lot! Getting the wrong customers on sales calls will decrease closing rates, especially SQL-to-MQL, at best and create negative customer experiences that reflect badly on the company at worst.
 
-## I am stuck between 2 ideas...
-
-For each project I will list the project, the sample client, the domain in paranthesis, and the department in brackets
-
-1. Lead Scoring for Hyros (high ticket software)[sales]
-2. KPI Analysis for Tiger Fitness's Youtube Channel (eCommerce brands that rely on Youtube for traffic)[marketing]
-
-I will spend a week working on both projects at the same time and then I'll go forward with just one.
