@@ -6,3 +6,5 @@ Hyros is a software that allows advertisers and digital marketers to accuratley 
 ## The problem
 Finding the right prospects is time consuming. This is a common problem in sales and marketing, however this especially is an issue for Hyros because they are selective about the customers they choose to onboard. How much would it suck to expand a sales team only to have them bring in customers that are unualified or unlikley to benefit from the service? a lot! Getting the wrong customers on sales calls will decrease closing rates, especially SQL-to-MQL, at best and create negative customer experiences that reflect badly on the company at worst.
 
+## Requirements
+* Be able to quantify the quality of a given lead.
