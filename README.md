@@ -8,3 +8,10 @@ Finding the right prospects is time consuming. This is a common problem in sales
 
 ## Requirements
 * Be able to quantify the quality of a given lead.
+
+# Questions for Sales reps at Software companies
+
+## companies to ask for opinion
+Oribi, Klayvio, Clickfunnels, Semrush, Salesforce via William Huynh
+1. If I were to make a lead scoring app for sales teams to use how would it need to work to be practical? About how many leads should it be able to score at one time? Does it need to be fast or it it okay is it runs a bit slower? Do you think the users would be more likley to use desktops or laptops?
+3. As a [title] at [company] What do you think are the main factors that go into selling a high ticket software product?
