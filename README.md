@@ -23,7 +23,34 @@ This project must have buy in from Hyros to be able tobe  compleated. That being
 1. SQL closing rate; because Hyros is stepping up it's outbound outreach it is especially looking to increase closing rate from leads qualified by the sales team as opposed to the marketing team
 2.  Sales cycle length
 3.  closing ratio
+4.  SQC revenue; I don't know if this is an offical metric but we are trying to increase revenue from sales qulaified customers
+
+**Model KPI's**
+1. Precision
+2. Mean Absolute Error
 
 # Questions for Sales reps at Software companies
 1. If I were to make a lead scoring app for sales teams to use how would it need to work to be practical? About how many leads should it be able to score at one time? Does it need to be fast or it it okay is it runs a bit slower? Do you think the users would be more likley to use desktops or laptops?
 3. As a [title] at [company] What do you think are the main factors that go into selling a high ticket software product? What attributes do you look at in a prospect?
+
+# Data needed for classification model
+## individual features
+1. monthly adspend
+2. number of paid traffic platforms
+3. type of business
+4. monthly revenue
+5. percent of traffic from ads
+6. Order Value
+7. new customers per month
+8. change in monthly website visits
+9. website bounce rate
+10. source of lead
+11. reviews of product/service
+12. subscriber **bonus**
+13. monthly hardcosts **bonus**
+
+## aggregated features
+1. est ad revenue; feat4 * feat5
+2. ROAS; ad revenue - feat1
+3. CAC; feat 7 / feat1
+4. Profit: feat4 - feat1 - feat13 **bonus**
