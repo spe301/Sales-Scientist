@@ -16,7 +16,7 @@ Finding the right prospects is time consuming. This is a common problem in sales
 I am going to build a binary classification model that scores leads on a scale of 0 to 1, additionally I will build a regression model of sorts to predict the monthly value of a lead as Hyros has an unfixed pricing model. This way the team can see what leads are likley to convert and which ones could bring Hyros more revenue should they convert. These values will be aggregated together somehow and will be scaled from 1 to 10. The application will also concatenate the predictions with the Sales Team's spreadsheet. 
 
 ## Feasability
-This project must have buy in from Hyros to be able tobe  compleated. That being said, I can pull data from known Hyros customers. I can find customers of Anytrack.io, a rival product, as well as generate slightly different datapoints to simulate leads that didn't close. I can seek buy in from Hyros to get access to their internal data to make the project 100%. This is risky business because I don't know what I'll be left with if they don't like or want it. I am going to continue with the project as of now but I will have to be flexible moving forward. 
+This project must have buy in from Hyros to be able to be  compleated. That being said, I can pull data from known Hyros customers. I can find customers of Anytrack.io, a rival product, as well as generate slightly different datapoints to simulate leads that didn't close. I can seek buy in from Hyros to get access to their internal data to make the project 100%. This is risky business because I don't know what I'll be left with if they don't like or want it. I am going to continue with the project as of now but I will have to be flexible moving forward. 
 
 ## KPI's and metrics
 **Business KPI's**
@@ -24,6 +24,7 @@ This project must have buy in from Hyros to be able tobe  compleated. That being
 2.  Sales cycle length
 3.  closing ratio
 4.  SQC revenue; I don't know if this is an offical metric but we are trying to increase revenue from sales qulaified customers
+5.  Customer LTV
 
 **Model KPI's**
 1. Precision
@@ -40,17 +41,30 @@ This project must have buy in from Hyros to be able tobe  compleated. That being
 3. type of business
 4. monthly revenue
 5. percent of traffic from ads
-6. Order Value
+6. Average Order Value
 7. new customers per month
 8. change in monthly website visits
 9. website bounce rate
 10. source of lead
 11. reviews of product/service
-12. subscriber **bonus**
-13. monthly hardcosts **bonus**
+12. Dominant social media platform
+13. subscriber **bonus**
+14. monthly hardcosts **bonus**
 
 ## aggregated features
 1. est ad revenue; feat4 * feat5
 2. ROAS; ad revenue - feat1
 3. CAC; feat 7 / feat1
 4. Profit: feat4 - feat1 - feat13 **bonus**
+
+## data sources
+* Similarweb api: part of 1, 2, 3, 5, 8, 9, 12
+* Facebook ad library: 6
+* Filler: 10
+* Dominant social media platform: 11
+* Spyfu: part of 1
+* Pitchbook?: 4
+* Unknown: 7
+
+## data collection strategy
+I'm going to store the names of the customers and put in filler values for source of lead in a database. I will iterate through the leads and make the requests and add all of it to the database. The data will be loaded in with Pandas and preporcessed for model training. We will update the database as new leads come in.
