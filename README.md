@@ -55,7 +55,23 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 1. est ad revenue; feat4 * feat5
 2. ROAS; ad revenue - feat1
 3. CAC; feat 7 / feat1
-4. Profit: feat4 - feat1 - feat13 **bonus**
+4. Profit: feat4 - feat1 - feat14 **bonus**
+
+# Data needed for regression model
+## individual features
+features 1 - 7, 11
+15. main keyword match types; broad match types are a sign of overspending
+16. number of links in landing page
+17. number of words in landing page
+18. number of keywords in landing page
+
+
+## aggregated features
+1. est ad revenue; feat4 * feat5
+2. ROAS; ad revenue - feat1
+3. CAC; feat 7 / feat1
+4. Landing Page Complexity; a combination of features 16 - . Possibly feat17 * feat16 * feat 18.
+5. Profit Margin: Profit / feat4 **bonus**
 
 ## data sources
 * Similarweb api: part of 1, 2, 3, 5, 8, 9, 12
