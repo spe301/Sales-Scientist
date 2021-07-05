@@ -68,3 +68,7 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 
 ## data collection strategy
 I'm going to store the names of the customers and put in filler values for source of lead in a database. I will iterate through the leads and make the requests and add all of it to the database. The data will be loaded in with Pandas and preporcessed for model training. We will update the database as new leads come in.
+
+## types of features
+Throughout our dataset we have 3 main types of features. These are qualification, information, and relationship. Qualification features determine if a customer is qualified to do business with us in the first place, these include adspend, type of business, and number of paid traffic platforms. Information features are used to help estimate the results Hyros can bring to a particular customer based on the preformance of the customer's digital marketing, combined with qualification features we can develop a pricing model to predict what that customer could be worth to us. The third type of feature is Relationship features, these features are near inpossible to access without buy in, these inform us on the relationship between the customer and Hyros. These include things like 'source of lead' and other details surrounding the customer's behaivor throughout the sales process, With these features we can better predict a lead's probability of closing although it is likley that we can still do reasonably well just with Qualification and Information features.
+
