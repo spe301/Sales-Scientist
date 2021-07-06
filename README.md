@@ -61,11 +61,12 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 ## individual features
 features 1 - 7, 11
 
-15. main keyword match types; broad match types are a sign of overspending
+15. main keyword match types; broad match types are a sign of overspending **bonus**
 16. number of links in landing page
 17. number of words in landing page
-18. number of keywords in landing page
+18. number of 'trigger words' in landing page
 
+trigger words are words that are associated with a call to action. words like book, call, get, clients, today, and join for example. This is important because too many trigger words indicate that the customer's landing page has multiple CTA's. We care about this because a landing page like this leaves the end customer confused and unlikley to take any action, a major sign of wasted ad spend. 
 
 ## aggregated features
 1. est ad revenue; feat4 * feat5
@@ -76,7 +77,7 @@ features 1 - 7, 11
 
 ## data sources
 * Similarweb api: part of 1, 2, 3, 5, 8, 9, 12
-* Facebook ad library: 6
+* Facebook ad library: 6, 16, 17, 18
 * Filler: 10
 * Dominant social media platform: 11
 * Spyfu: part of 1
