@@ -60,6 +60,7 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 # Data needed for regression model
 ## individual features
 features 1 - 7, 11
+
 15. main keyword match types; broad match types are a sign of overspending
 16. number of links in landing page
 17. number of words in landing page
