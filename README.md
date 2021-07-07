@@ -81,7 +81,7 @@ trigger words are words that are associated with a call to action. words like bo
 * Filler: 10
 * Dominant social media platform: 11
 * Spyfu: part of 1
-* Pitchbook or Fullcontact api?: 4
+* Pitchbook or Fullcontact api??: 4
 * Unknown: 7
 
 ## data collection strategy
