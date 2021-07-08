@@ -23,6 +23,7 @@ class aggregateFeatures:
                 'pdf', 'report', 'ebook', 'join', 'session', 'now', 'set', 'email',
                 'free', 'list', 'attend', 'start', 'access', 'training', 'speak', 
                 'expert', 'here']
+    '''trigger words are words that are associated with a call to action. We are creating a list of them so that we can cout the number of trigger words a business has in their landing page. A lot of trigger words indicate multiple CTA's, this is a sign of spending too much on ads.'''
     
     def adRevenue(self, revenue, percentAdTraffic):
         return revenue * (percentAdTraffic/100)
@@ -46,12 +47,3 @@ class aggregateFeatures:
     def profitMargin(self, revenue, adSpend, hardcosts):
         af = aggregateFeatures()
         return af.profit(revenue, adSpend, hardcosts) / revenue
-    
-class scraper:
-    
-    def similarWeb(self, df):
-        base_url = 'https://www.similarweb.com/website/{}/'
-        leads = list(df['lead'].apply(lambda x: x.lower()))
-        # this will be a for loop
-        url = base_url.format(leads[0])
-        return url
