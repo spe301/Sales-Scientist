@@ -19,6 +19,15 @@ NEWSPIDER_MODULE = 'sw.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'
+CONCURRENT_REQUESTS = 1
+DOWNLOAD_DELAY = 15
+
+SPLASH_URL = 'http://192.168.59.103:8050'
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapyjs.SplashMiddleware': 725,
+}
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 

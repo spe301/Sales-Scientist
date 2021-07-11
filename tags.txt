@@ -1,0 +1,12 @@
+visits: span.engagementInfo-valueNumber.js-countValue
+change in visits: span.websitePage-relativeChangeNumber
+bounce rate: div.engagementInfo-line
+% search: div.trafficSourcesChart-value
+% social: div.trafficSourcesChart-value
+% display ad: div.trafficSourcesChart-value
+% paid search: span.searchPie-number
+top platform: a.socialItem-title.name.link
+
+
+
+
