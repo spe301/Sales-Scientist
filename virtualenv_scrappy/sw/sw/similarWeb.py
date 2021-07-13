@@ -3,7 +3,6 @@ import scrapy
 class PostsSpider(scrapy.Spider):
     name = 'posts'
     f = open(r'C:\Users\aacjp\Spencer\similarWeb.txt').read()
-    #start_urls = ['https://www.similarweb.com/website/webuildbrands.com/']
     start_urls = f.split(' ')[:-1]
     
     '''def parse(self, response):
@@ -32,6 +31,7 @@ class PostsSpider(scrapy.Spider):
             percentDisplay = float(breakdown[5].replace('%', ''))/100
             percentSearchPaid = float(response.css('span.searchPie-number::text').getall()[1].replace('%', ''))/100
             topPlatform = response.css('a.socialItem-title.name.link::text').get()
+            percentPaidTraffic = (percentSocial+percentDisplay) + (percentSearchPaid*percentSearch)
         else:
             visits = 9999
             deltaVisits = 0
@@ -41,7 +41,7 @@ class PostsSpider(scrapy.Spider):
             percentDisplay = None
             percentSearchPaid = None
             topPlatform = None
-        percentPaidTraffic = (percentSocial+percentDisplay) + (percentSearchPaid*percentSearch)
+            percentPaidTraffic = None
         yield {'% paid traffic': percentPaidTraffic, 
                'visits': visits, 
                'monthly visits change': deltaVisits, 
