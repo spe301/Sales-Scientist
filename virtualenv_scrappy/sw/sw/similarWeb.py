@@ -1,5 +1,49 @@
 import scrapy
+import mysql.connector
+from getpass import getpass
+from mysql.connector import connect, Error
 
+class Spider2Sql:
+    def __init__(self, percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
+                 visits, deltaVisits, bounceRate, topPlatform):
+        self.percentSocial = percentSocial
+        self.percentDisplay = percentDisplay
+        self.percentSearchPaid = percentSearchPaid
+        self.percentSearch = percentSearch
+        self.visits = visits
+        self.deltaVisits = deltaVisits
+        self.bounceRate = bounceRate
+        self.topPlatform = topPlatform
+        
+    def writeValues(self):
+        percentSocial = self.percentSocial
+        percentDisplay = self.percentDisplay
+        percentSearchPaid = self.percentSearchPaid
+        percentSearch = self.percentSearch
+        visits = self.visits
+        deltaVisits = self.deltaVisits
+        bounceRate = self.bounceRate
+        topPlatform = self.topPlatform
+        return "({}, {}, {}, {}, {}, {}, {}, '{}')".format(percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
+                                         visits, deltaVisits, bounceRate, topPlatform)
+    
+    @classmethod
+    def insertionQuery(cls):
+        values = cls.writeValues()
+        query = '''insert into similarweb (percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
+                                         visits, deltaVisits, bounceRate, topPlatform) 
+        values {}'''.format(values)
+        return query
+    
+    @classmethod
+    def insertValues(cls, password, host='localhost', user='root', database='sys'):
+        connection = connect(host=host, user=user, password=password, database=database)
+        cursor = connection.cursor()  
+        q = cls.insertionQuery()
+        cursor.execute(q)
+        pass
+    
+    
 class PostsSpider(scrapy.Spider):
     name = 'posts'
     f = open(r'C:\Users\aacjp\Spencer\similarWeb.txt').read()
@@ -26,12 +70,12 @@ class PostsSpider(scrapy.Spider):
             deltaVisits = round(visits * trajectory)
             breakdown = response.css('div.trafficSourcesChart-value::text').getall()
             bounceRate = float(overview[-1].replace('%', ''))
-            percentSearch = float(breakdown[2].replace('%', ''))/100
-            percentSocial = float(breakdown[3].replace('%', ''))/100
-            percentDisplay = float(breakdown[5].replace('%', ''))/100
+            percentSearch = float(breakdown[2].replace('%', ''))
+            percentSocial = float(breakdown[3].replace('%', ''))
+            percentDisplay = float(breakdown[5].replace('%', ''))
             percentSearchPaid = float(response.css('span.searchPie-number::text').getall()[1].replace('%', ''))/100
             topPlatform = response.css('a.socialItem-title.name.link::text').get()
-            percentPaidTraffic = (percentSocial+percentDisplay) + (percentSearchPaid*percentSearch)
+            #percentPaidTraffic = (percentSocial+percentDisplay) + (percentSearchPaid*percentSearch)
         else:
             visits = 9999
             deltaVisits = 0
@@ -41,10 +85,8 @@ class PostsSpider(scrapy.Spider):
             percentDisplay = None
             percentSearchPaid = None
             topPlatform = None
-            percentPaidTraffic = None
-        yield {'% paid traffic': percentPaidTraffic, 
-               'visits': visits, 
-               'monthly visits change': deltaVisits, 
-               'bounce rate': bounceRate, 
-               'dominant platform': topPlatform}
+        s2s = Spider2Sql(percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
+                         visits, deltaVisits, bounceRate, topPlatform)
+        s2s.insertValues(input('Enter password:'))
+        return None
         
