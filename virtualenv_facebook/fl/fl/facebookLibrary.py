@@ -5,10 +5,7 @@ class PagesSpider(scrapy.Spider):
     start_urls = ['https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&view_all_page_id=137568852956377&sort_data[direction]=desc&sort_data[mode]=relevancy_monthly_grouped&search_type=page&media_type=all']
     
     def parse(self, response):
-        page = response.url.split('/')[-1]
-        filename = 'posts-%s.html' % page
-        with open(filename, 'wb') as f:
-            f.write(response.body)
+        print(response.css('h2').getall())
         return response.body
     
     '''def parse(self, response):
