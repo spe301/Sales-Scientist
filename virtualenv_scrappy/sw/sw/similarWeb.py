@@ -29,7 +29,7 @@ class Spider2Sql:
     
     @classmethod
     def insertionQuery(cls):
-        values = cls.writeValues()
+        values = cls.writeValues(cls)
         query = '''insert into similarweb (percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
                                          visits, deltaVisits, bounceRate, topPlatform) 
         values {}'''.format(values)
