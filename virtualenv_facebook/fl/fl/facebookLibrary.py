@@ -5,8 +5,11 @@ class PagesSpider(scrapy.Spider):
     start_urls = ['https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&view_all_page_id=137568852956377&sort_data[direction]=desc&sort_data[mode]=relevancy_monthly_grouped&search_type=page&media_type=all']
     
     def parse(self, response):
-        print(response.css('h2').getall())
-        return response.body
+        page = response.url.split("/")[-2]
+        filename = f'quotes-{page}.html'
+        with open(filename, 'wb') as f:
+            f.write(response.body)
+        self.log(f'Saved file {filename}')
     
     '''def parse(self, response):
         overview = response.css('span.engagementInfo-valueNumber.js-countValue::text').getall()

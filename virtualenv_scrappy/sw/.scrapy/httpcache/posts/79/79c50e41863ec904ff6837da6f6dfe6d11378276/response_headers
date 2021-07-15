@@ -1,0 +1,10 @@
+Content-Type: text/html
+Server: CloudFront
+Date: Thu, 15 Jul 2021 12:45:21 GMT
+Cache-Control: no-cache
+Content-Encoding: gzip
+Vary: Accept-Encoding
+X-Cache: LambdaGeneratedResponse from cloudfront
+Via: 1.1 b61c2254e0853d20c5ffa13ca73fd265.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: ATL56-C1
+X-Amz-Cf-Id: YfgUCS3m3h_wxDgUDnuhkex68nuQ_U6BgFQYHtBs-ybkAyzAGnBXpg==
