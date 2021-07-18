@@ -55,12 +55,8 @@ class aggregateFeatures:
     def profit(self, revenue, adSpend, hardcosts):
         return revenue - adSpend - hardcosts
     
-    def landingPageComplexity(self, links, words):
-        tw = 0
-        for w in words:
-            if w in self.triggerWords:
-                tw += 1
-        return tw * len(links) * len(words)
+    def landingPageComplexity(self, links, words, triggerWords):
+        return links+1 * words+1 * triggerWords+1
     
     def profitMargin(self, revenue, adSpend, hardcosts):
         af = aggregateFeatures()
