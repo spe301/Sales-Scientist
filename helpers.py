@@ -43,6 +43,29 @@ class individualFeatures:
     
 class aggregateFeatures:
     
+    def estimateRevenue(self, df, key):
+        fcc = FullContactClient(key)
+        revenue = []
+        for i in range(len(df)):
+            row = df.iloc[i]
+            lead = fcc.company.enrich(domain=row['lead']).json()
+            try:
+                if row['business model'] == 'consulting':
+                    revenue.append(lead['employees'] * 15873)
+                if row['business model'] == 'ecommerce':
+                    revenue.append(lead['employees'] * 66666)
+                if row['business model'] == 'info':
+                    revenue.append(lead['employees'] * 16666)
+                if row['business model'] == 'media':
+                    revenue.append(lead['employees'] * 50000)
+                if row['business model'] == 'restaurant':
+                    revenue.append(lead['employees'] * 35714)
+                if row['business model'] == 'software':
+                    revenue.append(lead['employees'] * 379722)
+            except:
+                revenue.append(False)
+        return revenue
+    
     def adRevenue(self, revenue, percentAdTraffic):
         return revenue * (percentAdTraffic/100)
     
