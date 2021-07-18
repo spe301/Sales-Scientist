@@ -1,5 +1,5 @@
 import pandas as pd
-import scrapy
+from fullcontact import FullContactClient
 
 class individualFeatures:
     '''trigger words are words that are associated with a call to action. We are creating a list of them so that we can cout the number of trigger words a business has in their landing page. A lot of trigger words indicate multiple CTA's, this is a sign of spending too much on ads.'''
