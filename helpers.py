@@ -73,7 +73,7 @@ class aggregateFeatures:
         return adRevenue - adSpend
     
     def cac(self, newCustomers, adSpend):
-        return newCustomers / adSpend
+        return adSpend / newCustomers
     
     def profit(self, revenue, adSpend, hardcosts):
         return revenue - adSpend - hardcosts
