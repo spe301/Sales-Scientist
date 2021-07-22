@@ -70,7 +70,7 @@ class aggregateFeatures:
         return revenue * (percentAdTraffic/100)
     
     def roas(self, adRevenue, adSpend):
-        return adRevenue - adSpend
+        return adRevenue / adSpend
     
     def cac(self, newCustomers, adSpend):
         return adSpend / newCustomers
