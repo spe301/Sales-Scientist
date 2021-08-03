@@ -84,3 +84,8 @@ class aggregateFeatures:
     def profitMargin(self, revenue, adSpend, hardcosts):
         af = aggregateFeatures()
         return af.profit(revenue, adSpend, hardcosts) / revenue
+
+    class Math:
+        
+        def cubicRoot(self, x):
+            return x ** (1. / 3)
