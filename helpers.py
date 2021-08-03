@@ -92,8 +92,8 @@ class Data:
         yes = df.loc[df[target_col] == 1]
         no = df.loc[df[target_col] == 0]
         df = pd.concat([yes, no])
-        inv = len(df) - class_size - 2
-        positives = df.iloc[:class_size+2]
+        inv = len(df) - class_size - 6
+        positives = df.iloc[:class_size+6]
         negatives = df.iloc[inv:]
         posX = positives.drop([target_col], axis='columns')
         posY = positives[target_col]
