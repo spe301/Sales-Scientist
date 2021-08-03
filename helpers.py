@@ -85,6 +85,27 @@ class aggregateFeatures:
         af = aggregateFeatures()
         return af.profit(revenue, adSpend, hardcosts) / revenue
 
+class Data:
+    
+    def doubleUp(self, df, class_size, target_col, sm):
+        yes = df.loc[df[target_col] == 1]
+        no = df.loc[df[target_col] == 0]
+        df = pd.concat([yes, no])
+        inv = len(df) - class_size - 2
+        positives = df.iloc[:class_size+2]
+        negatives = df.iloc[inv:]
+        posX = positives.drop([target_col], axis='columns')
+        posY = positives[target_col]
+        posX2, posY2 = sm.fit_resample(posX, posY)
+        pos2 = posX2
+        pos2[target_col] = posY2
+        negX = negatives.drop([target_col], axis='columns')
+        negY = negatives[target_col]
+        negX2, negY2 = sm.fit_resample(negX, negY)
+        neg2 = negX2
+        neg2[target_col] = negY2
+        return pd.concat([pos2, neg2])
+    
 class Math:
     
     def cubicRoot(self, x):
