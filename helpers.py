@@ -1,6 +1,7 @@
 import pandas as pd
 from fullcontact import FullContactClient
 from imblearn.over_sampling import SMOTENC
+from urllib.request import urlopen, Request
 
 class individualFeatures:
     '''trigger words are words that are associated with a call to action. We are creating a list of them so that we can cout the number of trigger words a business has in their landing page. A lot of trigger words indicate multiple CTA's, this is a sign of spending too much on ads.'''
@@ -106,6 +107,23 @@ class Data:
         neg2 = negX2
         neg2[target_col] = negY2
         return pd.concat([pos2, neg2])
+    
+    def lpCopy(self, url, headers):
+        req = Request(url=url, headers=headers) 
+        html = urlopen(req).read()
+        soup = BeautifulSoup(html, 'lxml')
+        div = soup.findAll('div')
+        p = soup.findAll('p')
+        try:
+            text = div[0].text + p[0].text
+        except: 
+            text = div[0].text
+        text2 = text.replace('\n', '').replace('\'', '').replace(')', '').replace('(', '').lower()
+        text3 = re.sub("([\(\[]).*?([\)\]])", '', text2)
+        text4 = re.sub(r'\[(^)*\]', '', text3)
+        text5 = text4.replace('-', '').replace('"', '').replace('!', ' ').replace('*', '').replace(':', ' ').replace('.', ' ')
+        text6 = text5.replace('?', ' ')
+        return text6
     
 class Math:
     
