@@ -29,7 +29,7 @@ class individualFeatures:
         triggerWords = ['book', 'call', 'today', 'get', 'my', 'free', 'copy', 'checklist', 
                 'pdf', 'report', 'ebook', 'join', 'session', 'now', 'set', 'email',
                 'free', 'list', 'attend', 'start', 'access', 'training', 'speak', 
-                'expert', 'here']
+                'expert', 'here', 'send', 'strategy', 'course', 'quote', 'newsletter']
         tw = 0
         for lp in landingPage.split(' '):
             if lp in triggerWords:
