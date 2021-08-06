@@ -2,6 +2,13 @@ import pandas as pd
 from fullcontact import FullContactClient
 from imblearn.over_sampling import SMOTENC
 from urllib.request import urlopen, Request
+import numpy as np
+import mysql.connector
+from getpass import getpass
+from mysql.connector import connect
+from bs4 import BeautifulSoup
+import requests
+import re
 
 class individualFeatures:
     '''trigger words are words that are associated with a call to action. We are creating a list of them so that we can cout the number of trigger words a business has in their landing page. A lot of trigger words indicate multiple CTA's, this is a sign of spending too much on ads.'''
@@ -42,6 +49,7 @@ class individualFeatures:
             if lp.startswith('http') == True:
                 links += 1
         return links
+    
     
 class aggregateFeatures:
     
@@ -86,7 +94,20 @@ class aggregateFeatures:
     def profitMargin(self, revenue, adSpend, hardcosts):
         af = aggregateFeatures()
         return af.profit(revenue, adSpend, hardcosts) / revenue
+    
+    def lpc(database='sys', table='landing2'):
+        password = input('Enter password: ')
+        connection = connect(host='localhost', user='root', password=password, database=database)
+        cursor = connection.cursor()
+        q = 'select * from {};'.format(table)
+        cursor.execute(q)
+        results = cursor.fetchall()
+        complexities = []
+        for r in results:
+            complexities.append(r[0]*r[1]*r[2])
+        return complexities
 
+    
 class Data:
     
     def doubleUp(self, df, class_size, target_col, sm):
@@ -108,6 +129,31 @@ class Data:
         neg2[target_col] = negY2
         return pd.concat([pos2, neg2])
     
+    def lpContent(self, results, headers, database='sys'):
+        password = input('Enter password: ')
+        connection = connect(host='localhost', user='root', password=password, database=database)
+        cursor = connection.cursor()
+        queries = []
+        for i in range(len(results)):
+            print(i)
+            url = results[i][0]
+            try:
+                lp = lpCopy(url, headers) + ' ' + ctaButton(url, headers)
+                lc = countLinks(url, headers)
+            except:
+                lp = ''
+                lc = 0
+            nwords, ntriggers = lpMetadata(lp)
+            q = 'INSERT INTO landing2 (nwords, ntriggers, lc) VALUES ({}, {}, {});'.format(nwords, ntriggers, lc)
+            queries.append(q)
+        for query in queries:
+            cursor.execute(query)
+        connection.commit()
+        pass
+ 
+
+class Scraping:
+    
     def lpCopy(self, url, headers):
         req = Request(url=url, headers=headers) 
         html = urlopen(req).read()
@@ -123,7 +169,31 @@ class Data:
         text4 = re.sub(r'\[(^)*\]', '', text3)
         text5 = text4.replace('-', '').replace('"', '').replace('!', ' ').replace('*', '').replace(':', ' ').replace('.', ' ')
         text6 = text5.replace('?', ' ')
-        return text6
+        text7 = text6.replace('|', '').replace('/', '').replace(',', '').replace('...', '')
+        text8 = text7.replace('\xa0', '').replace('“', '').replace('”', '').replace('…', '')
+        return text8
+    
+    def ctaButton(self, url, headers):
+        req = Request(url=url, headers=headers) 
+        html = urlopen(req).read()
+        soup = BeautifulSoup(html, 'lxml')
+        span = soup.findAll('span')
+        return span[2].text.lower()
+
+    def lpMetadata(self, text):
+        words = text.split(' ')
+        n_trigger_words = individualFeatures().triggerWords(text)
+        n_words = len(words)
+        return n_words , n_trigger_words
+
+    def countLinks(self, url, headers):
+        req = Request(url=url, headers=headers) 
+        html = urlopen(req).read()
+        soup = BeautifulSoup(html, 'lxml')
+        links = []
+        for link in soup.findAll('a', attrs={'href': re.compile("^https://")}):
+            links.append(link.get('href'))
+        return len(links)
     
 class Math:
     
