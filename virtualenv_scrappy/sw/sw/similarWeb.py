@@ -4,57 +4,41 @@ from getpass import getpass
 from mysql.connector import connect, Error
 
 class Spider2Sql:
-    def __init__(self, percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
-                 visits, deltaVisits, bounceRate, topPlatform):
-        self.percentSocial = percentSocial
-        self.percentDisplay = percentDisplay
-        self.percentSearchPaid = percentSearchPaid
-        self.percentSearch = percentSearch
-        self.visits = visits
-        self.deltaVisits = deltaVisits
-        self.bounceRate = bounceRate
-        self.topPlatform = topPlatform
+    
+    def __init__(self):
+        self.create_connection()
         
-    def writeValues(self):
-        percentSocial = self.percentSocial
-        percentDisplay = self.percentDisplay
-        percentSearchPaid = self.percentSearchPaid
-        percentSearch = self.percentSearch
-        visits = self.visits
-        deltaVisits = self.deltaVisits
-        bounceRate = self.bounceRate
-        topPlatform = self.topPlatform
-        return "({}, {}, {}, {}, {}, {}, {}, '{}')".format(percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
-                                         visits, deltaVisits, bounceRate, topPlatform)
+    def create_connection(self):
+        self.conn = connect(host='localhost', user='root', password='Raptor//Kona9', database='sys')
+        self.curr = self.conn.cursor()
+        
+    def process_item(self, item, Spider):
+        self.store_db(item)
+        return item
     
-    @classmethod
-    def insertionQuery(cls):
-        values = cls.writeValues(cls)
-        query = '''insert into similarweb (percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
-                                         visits, deltaVisits, bounceRate, topPlatform) 
-        values {}'''.format(values)
-        return query
-    
-    @classmethod
-    def insertValues(cls, password, host='localhost', user='root', database='sys'):
-        connection = connect(host=host, user=user, password=password, database=database)
-        cursor = connection.cursor()  
-        q = cls.insertionQuery()
-        cursor.execute(q)
-        pass
-    
+    def store_db(self, item):
+        visits = item['visits']
+        deltaVisits = item['deltaVisits']
+        bounceRate = item['bounceRate']
+        percentSearch = item['percentSearch']
+        percentSocial = item['percentSocial']
+        percentDisplay = item['percentDisplay']
+        percentSearchPaid = item['percentSearchPaid']
+        topPlatform = item['topPlatform']
+        q = '''INSERT INTO similarweb (visits, monthlyVisitsChange, bounceRate, percentSearch, percentSocial, percentDisplay,
+        percentSearchPaid, dominantPlatform) VALUES ({}, {}, {}, {}, 
+                                                {}, {}, {});'''.format(visits, deltaVisits, bounceRate, percentSearch, percentSocial, percentDisplay,
+        percentSearchPaid)
+        self.curr.execute(q)
+        self.conn.commit()
     
 class PostsSpider(scrapy.Spider):
     name = 'posts'
     f = open(r'C:\Users\aacjp\Spencer\similarWeb.txt').read()
-    start_urls = f.split(' ')[:-1]
+    start_urls = f.split(' ')[27:31] #-1
     
-    '''def parse(self, response):
-        page = response.url.split('/')[-1]
-        filename = 'posts-%s.html' % page
-        with open(filename, 'wb') as f:
-            f.write(response.body)
-        return response.body'''
+    def parse(self, response):
+        return response.css('a.href').getall()
     
     def parse(self, response):
         overview = response.css('span.engagementInfo-valueNumber.js-countValue::text').getall()
@@ -85,8 +69,9 @@ class PostsSpider(scrapy.Spider):
             percentDisplay = None
             percentSearchPaid = None
             topPlatform = None
-        s2s = Spider2Sql(percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
-                         visits, deltaVisits, bounceRate, topPlatform)
-        s2s.insertValues(input('Enter password:'))
-        return None
+        results = {'visits': visits, 'deltaVisits': deltaVisits, 'bounceRate': bounceRate, 
+               'percentSearch': percentSearch, 'percentSocial': percentSocial, 'percentDisplay': percentDisplay, 
+               'percentSearchPaid': percentSearchPaid, 'topPlatform': topPlatform}
+        Spider2Sql().store_db(results)
+        yield results
         
