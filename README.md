@@ -34,55 +34,17 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 1. If I were to make a lead scoring app for sales teams to use how would it need to work to be practical? About how many leads should it be able to score at one time? Does it need to be fast or it it okay is it runs a bit slower? Do you think the users would be more likley to use desktops or laptops?
 3. As a [title] at [company] What do you think are the main factors that go into selling a high ticket software product? What attributes do you look at in a prospect?
 
-# Data needed for classification model
+# Data needed
 ## individual features
-1. monthly adspend
-2. number of paid traffic platforms
-3. type of business
-4. monthly revenue
-5. percent of traffic from ads
-6. Average Order Value
-7. new customers per month
-8. change in monthly website visits
-9. website bounce rate
-10. source of lead
-11. reviews of product/service
-12. Dominant social media platform
-13. subscriber **bonus**
-14. monthly hardcosts **bonus**
 
 ## aggregated features
-1. est ad revenue; feat4 * (feat5/100)
-2. ROAS; ad revenue - feat1
-3. CAC; feat 7 / feat1
-4. Profit: feat4 - feat1 - feat14 **bonus**
-
-# Data needed for regression model
-## individual features
-features 1 - 7, 11
-
-15. main keyword match types; broad match types are a sign of overspending **bonus**
-16. number of links in landing page
-17. number of words in landing page
-18. number of 'trigger words' in landing page
-
-trigger words are words that are associated with a call to action. words like book, call, get, clients, today, and join for example. This is important because too many trigger words indicate that the customer's landing page has multiple CTA's. We care about this because a landing page like this leaves the end customer confused and unlikley to take any action, a major sign of wasted ad spend. 
-
-## aggregated features
-1. est ad revenue; feat4 * feat5
-2. ROAS; ad revenue - feat1
-3. CAC; feat 7 / feat1
-4. Landing Page Complexity; a combination of features 16 - . Possibly feat17 * feat16 * feat 18.
-5. Profit Margin: Profit / feat4 **bonus**
 
 ## data sources
-* Similarweb api: part of 1, 2, 3, 5, 8, 9, 12
-* Facebook ad library: 6, 16, 17, 18
-* Filler: 10
-* Dominant social media platform: 11
-* Spyfu: part of 1
-* Pitchbook or Fullcontact api??: 4
-* Unknown: 7
+* Similarweb: 
+* landing page: 
+* Survey: 
+* Dominant social media platform (we will just twitter for now because it's easier): 
+* Zoominfo:
 
 ## data collection strategy
 I'm going to store the names of the customers and put in filler values for source of lead in a database. I will iterate through the leads and make the requests and add all of it to the database. The data will be loaded in with Pandas and preporcessed for model training. We will update the database as new leads come in. Additionally, I will scrape each lead's most recent landing page to get features 16 - 18. So far I've set up a web crawler with the Scrapy library and it seems that I will be able to scrape features 2, 5, 8, 9, and 12 from Similar Web without too much trouble. I currently have 60 datapoints that I collected manually so that I have something to analyze, this way my analytics dosen't get rusty while I develop my Data Engineering skills. I also see value in conducting surveys in the facebook group for additional data, this can also be a great opportunity to promote my work!
