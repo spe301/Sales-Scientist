@@ -68,7 +68,7 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 5. roas = ad revenue / new customers
 6. cac = adspend / new customers
 7. profit = revenue - adspend - hardcosts
-8. lpc = words+1*triggers+1*links+1
+8. lpc = words+1 * triggers+1 * links+1
 9. profit margin = profit / revenue
 10. average order value
 11. monthly customers
