@@ -129,7 +129,7 @@ class Data:
         neg2[target_col] = negY2
         return pd.concat([pos2, neg2])
     
-    def getLandings(self, host, user, password, database, cols):
+    def getCol(self, host, user, password, database, cols):
         connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
         cursor = connection.cursor()
         cursor.execute('select {} from survey;'.format(cols))
@@ -137,7 +137,7 @@ class Data:
 
     # I need to inspect the holdup at results[54]
     def lpContent(self, headers):
-        results = getCol('localhost', 'root', 'Raptor//Kona9', 'leads', 'domain, landingPage')
+        results = Data().getCol('localhost', 'root', 'Raptor//Kona9', 'leads', 'domain, landingPage')
         connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
         cursor = connection.cursor()
         queries = []
