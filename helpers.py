@@ -152,7 +152,7 @@ class Data:
                 lp = ''
                 lc = 0
             nwords, ntriggers = lpMetadata(lp)
-            q = 'INSERT INTO landingpage (domain, landingPage, words, triggers, links) VALUES ({}, {}, {}, {}, {});'.format(lead, url, nwords, ntriggers, lc)
+            q = 'INSERT INTO landingpage (name, landingPage, words, triggers, links) VALUES ({}, {}, {}, {}, {});'.format(lead, url, nwords, ntriggers, lc)
             queries.append(q)
         for query in queries:
             cursor.execute(query)
