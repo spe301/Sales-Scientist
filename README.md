@@ -36,18 +36,59 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 
 # Data needed
 ## individual features
+1. name
+2. landing page
+3. customer
+4. domain
+5. model
+6. source
+7. subscriber
+8. adspend
+9. hardcosts
+10. percent social
+11. percent display
+12. percent search paid
+13. percent search
+14. visits
+15. monthly visits change
+16. bounce rate 
+17. dominant platform
+18. polarity
+19. subjectivity
+20. words
+21. triggers
+22. links
+23. revenue
 
 ## aggregated features
+1. ad revenue = revenue * percent paid
+2. adspend 
+3. hardcosts
+4. monthly revenue
+5. roas = ad revenue / new customers
+6. cac = adspend / new customers
+7. profit = revenue - adspend - hardcosts
+8. lpc = words+1*triggers+1*links+1
+9. profit margin = profit / revenue
+10. average order value
+11. monthly customers
 
 ## data sources
-* Similarweb: 
-* landing page: 
-* Survey: 
-* Dominant social media platform (we will just twitter for now because it's easier): 
-* Zoominfo:
+* Similarweb: 10, 11, 12, 13, 14, 15, 16, 17
+* landing page: 20, 21, 22
+* Survey: 1, 2, 3, 4, 5, 6?, 7?, 8?, 9?, 10?
+* Dominant social media platform (we will just twitter for now because it's easier): 18, 19
+* Zoominfo: 23
 
 ## data collection strategy
-I'm going to store the names of the customers and put in filler values for source of lead in a database. I will iterate through the leads and make the requests and add all of it to the database. The data will be loaded in with Pandas and preporcessed for model training. We will update the database as new leads come in. Additionally, I will scrape each lead's most recent landing page to get features 16 - 18. So far I've set up a web crawler with the Scrapy library and it seems that I will be able to scrape features 2, 5, 8, 9, and 12 from Similar Web without too much trouble. I currently have 60 datapoints that I collected manually so that I have something to analyze, this way my analytics dosen't get rusty while I develop my Data Engineering skills. I also see value in conducting surveys in the facebook group for additional data, this can also be a great opportunity to promote my work!
+The inital dataset, MockHyros.csv, is a very small dataset of 60 rows that I manually collected. The reason for this was that I was struggling with the webscraping and data pipeline and I desperatley wanted a dataset that I could analyze. This way I could have data to work with so that I would be motivated to work on my statistics skills and keep my data analytics skills sharp while I worked on getting my scrapers to work. Next, I used Systematic Oversampling Technique to generate fake datapoints augmenting my dataset to 1020 rows aka samples. In order to collect more data I will conduct a survey for those who have gone through the Hyros sales process, participants will be asked a few questions which will be stored into a database. These results will give the data pipeline the knowledge nessecary to connect to all the data sources which will be used to insert the rest of the information into the database.
+
+**Survey Questions**
+1. What is the domain name of your business? (ie. FrankKern.com)
+2. Please provide the url to the landing page of your latest ad campaign 
+3. Have you purchased Hyros?
+4. What domain is your business in? (ie. Fitness)
+5. What best describes the products/services that make up the most of your revenue? [Consulting, Information\Coaching, Tangible Products, Other]
 
 ## types of features
 Throughout our dataset we have 3 main types of features. These are qualification, information, and relationship. Qualification features determine if a customer is qualified to do business with us in the first place, these include adspend, type of business, and number of paid traffic platforms. Information features are used to help estimate the results Hyros can bring to a particular customer based on the preformance of the customer's digital marketing, combined with qualification features we can develop a pricing model to predict what that customer could be worth to us. The third type of feature is Relationship features, these features are near inpossible to access without buy in, these inform us on the relationship between the customer and Hyros. These include things like 'source of lead' and other details surrounding the customer's behaivor throughout the sales process, With these features we can better predict a lead's probability of closing although it is likley that we can still do reasonably well just with Qualification and Information features.
