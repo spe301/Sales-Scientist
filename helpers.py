@@ -95,11 +95,11 @@ class aggregateFeatures:
         af = aggregateFeatures()
         return af.profit(revenue, adSpend, hardcosts) / revenue
     
-    def lpc(database='sys', table='landing2'):
+    def lpc(database='leads', table='landingpage'):
         password = input('Enter password: ')
         connection = connect(host='localhost', user='root', password=password, database=database)
         cursor = connection.cursor()
-        q = 'select * from {};'.format(table)
+        q = 'select words, triggers, links from {};'.format(table)
         cursor.execute(q)
         results = cursor.fetchall()
         complexities = []
