@@ -129,14 +129,22 @@ class Data:
         neg2[target_col] = negY2
         return pd.concat([pos2, neg2])
     
-    def lpContent(self, results, headers, database='sys'):
-        password = input('Enter password: ')
-        connection = connect(host='localhost', user='root', password=password, database=database)
+    def getLandings(self, host, user, password, database, cols):
+        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        cursor = connection.cursor()
+        cursor.execute('select {} from survey;'.format(cols))
+        return cursor.fetchall()
+
+    # I need to inspect the holdup at results[54]
+    def lpContent(self, headers):
+        results = getCol('localhost', 'root', 'Raptor//Kona9', 'leads', 'domain, landingPage')
+        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
         cursor = connection.cursor()
         queries = []
         for i in range(len(results)):
             print(i)
-            url = results[i][0]
+            lead = results[i][0]
+            url = results[i][1]
             try:
                 lp = lpCopy(url, headers) + ' ' + ctaButton(url, headers)
                 lc = countLinks(url, headers)
@@ -144,7 +152,7 @@ class Data:
                 lp = ''
                 lc = 0
             nwords, ntriggers = lpMetadata(lp)
-            q = 'INSERT INTO landing2 (nwords, ntriggers, lc) VALUES ({}, {}, {});'.format(nwords, ntriggers, lc)
+            q = 'INSERT INTO landingpage (domain, landingPage, words, triggers, links) VALUES ({}, {}, {}, {}, {});'.format(lead, url, nwords, ntriggers, lc)
             queries.append(q)
         for query in queries:
             cursor.execute(query)
