@@ -137,7 +137,7 @@ class Data:
 
     # I need to inspect the holdup at results[54]
     def lpContent(self, headers):
-        results = Data().getCol('localhost', 'root', 'Raptor//Kona9', 'leads', 'domain, landingPage')
+        results = Data().getCol('localhost', 'root', 'Raptor//Kona9', 'leads', 'name, landingPage')
         connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
         cursor = connection.cursor()
         queries = []
