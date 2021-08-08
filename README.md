@@ -15,6 +15,8 @@ Finding the right prospects is time consuming. This is a common problem in sales
 ## Solution
 I am going to build a binary classification model that scores leads on a scale of 0 to 1, additionally I will build a regression model of sorts to predict the monthly value that Hyros could bring to the lead. This way the team can see what leads are likley to convert and which ones could bring Hyros more revenue should they convert. These values will be aggregated together somehow and will be scaled from 1 to 10. The application will also concatenate the predictions with the Sales Team's spreadsheet. 
 
+<img src="images/Screenshot (74).png/">
+
 ## Feasability
 This project must have buy in from Hyros to be able to be  compleated. That being said, I can pull data from known Hyros customers. I can find customers of Anytrack.io, a rival product, as well as generate slightly different datapoints to simulate leads that didn't close. I can seek buy in from Hyros to get access to their internal data to make the project 100%. This is risky business because I don't know what I'll be left with if they don't like or want it. I am going to continue with the project as of now but I will have to be flexible moving forward. 
 
