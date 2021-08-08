@@ -62,9 +62,6 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 
 ## aggregated features
 1. ad revenue = revenue * percent paid
-2. adspend 
-3. hardcosts
-4. monthly revenue
 5. roas = ad revenue / new customers
 6. cac = adspend / new customers
 7. profit = revenue - adspend - hardcosts
@@ -89,6 +86,9 @@ The inital dataset, MockHyros.csv, is a very small dataset of 60 rows that I man
 3. Have you purchased Hyros?
 4. What domain is your business in? (ie. Fitness)
 5. What best describes the products/services that make up the most of your revenue? [Consulting, Information\Coaching, Tangible Products, Other]
+6. How much do you spend on ads per month?
+7. What are your monthly hardcosts? (these exclude employees, rent, and adspend)
+8. How did you find out about Hyros? (Youtube, Facebook, Twitter, Word of Mouth, Other)
 
 **Where to find participants?**
 1. The Hyros facebook group (this is a private group and may be hard to join)
@@ -97,4 +97,3 @@ The inital dataset, MockHyros.csv, is a very small dataset of 60 rows that I man
 
 ## types of features
 Throughout our dataset we have 3 main types of features. These are qualification, information, and relationship. Qualification features determine if a customer is qualified to do business with us in the first place, these include adspend, type of business, and number of paid traffic platforms. Information features are used to help estimate the results Hyros can bring to a particular customer based on the preformance of the customer's digital marketing, combined with qualification features we can develop a pricing model to predict what that customer could be worth to us. The third type of feature is Relationship features, these features are near inpossible to access without buy in, these inform us on the relationship between the customer and Hyros. These include things like 'source of lead' and other details surrounding the customer's behaivor throughout the sales process, With these features we can better predict a lead's probability of closing although it is likley that we can still do reasonably well just with Qualification and Information features.
-
