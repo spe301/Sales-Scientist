@@ -8,32 +8,30 @@ cursor = connection.cursor()
 connection2 = connect(host='localhost', user='root', password='Raptor//Kona9', database='fox_data_consulting')
 cursor2 = connection2.cursor()
 
-def processUserInput(name, customer, domain):
-    name = name.lower()
-    if customer == 'yes':
-        customer = 1
-    if customer == 'no':
-        customer = 0
-    domain = domain.lower()
-    return name, customer, domain
-
-def writeQuery(name, landingPage, customer, domain, model, source, adspend, hardcosts):
-    q = 'INSERT INTO survey (name, landingPage, customer, domain, model, source, adspend, hardcosts) VALUES ({}, {}, {}, {}, {});'
-    pass
-
-def storeEmail(email):
-    pass
-
 app = Flask(__name__)
-name, customer, domain = processUserInput(name, customer, domain)
+#name, customer, domain = processUserInput(name, customer, domain)
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/predict', methods=['POST'])
+#try using another function with the same name
+@app.route('/store', methods=['POST'])
 def store():
-    pass
+    name = request.form['name'].lower()
+    cursor.execute('''INSERT INTO test (col1) VALUES ('{}');'''.format(name))
+    connection.commit()
+    return name
+
+
+
+'''@app.route('/predict', methods=['POST'])
+def predict():
+    name = get_name()
+    landingPage = get_landingPage()
+    cursor.execute('INSERT INTO test (col1, col2) VALUES ('{}', '{}');'.format(name, landingPage))
+    connection.commit()
+    return render_template('index.html')'''
 
 if __name__ == "__main__":
     app.run(debug=True, threaded=True)

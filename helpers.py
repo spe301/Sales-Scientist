@@ -207,3 +207,8 @@ class Math:
     
     def cubicRoot(self, x):
         return x ** (1. / 3)
+
+connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+cursor = connection.cursor()
+cursor.execute('''INSERT INTO test (col1, col2) VALUES ('Cardinal', 'Stavanger');''')
+print('ok')

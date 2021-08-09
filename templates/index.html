@@ -20,8 +20,8 @@ body {
         <div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
         </div>
 	<h2 style="color: blue;">What is the domain name of your business (ie. FrankKern.com)?</h2>
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Text" placeholder="please do not use spaces" required="required" />
+    <form action="{{ url_for('store')}}"method="post">
+    	<input type="text" name="name" placeholder="please do not use spaces" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
     </form>
@@ -31,8 +31,8 @@ body {
         </div>
 	<h2 style="color: blue;">Please provide the url to the landing page of your latest ad campaign</h2>
 
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Text" placeholder="landing page url" required="required" />
+    <form action="{{ url_for('store')}}"method="post">
+    	<input type="text" name="landingPage" placeholder="landing page url" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
     </form>
@@ -113,8 +113,8 @@ body {
         </div>
 	<h2 style="color: blue;">How much do you spend on ads per month?</h2>
 
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="number" name="Number" placeholder="enter approximate amount" required="required" />
+    <form action="{{ url_for('store')}}"method="post">
+    	<input type="" name="adspend" placeholder="please use only numbers" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
     </form>
@@ -125,8 +125,8 @@ body {
 	<h2 style="color: blue;">What are your monthly hardcosts?</h2>
     <h2 style="color: blue;">These exclude employees, rent, and adspend.</h2>
 
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="number" name="Number" placeholder="enter approximate amount" required="required" />
+    <form action="{{ url_for('store')}}"method="post">
+    	<input type="number" name="hardcosts" placeholder="enter approximate amount" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
     </form>
@@ -151,8 +151,8 @@ body {
         </div>
     <h2 style="color: blue;">Enter your email to receive ... !</h2>
 
-    <form action="{{ url_for('predict')}}"method="post">
-        <input type="text" name="Text" placeholder="email address" required="required" />
+    <form action="{{ url_for('store')}}"method="post">
+        <input type="text" name="email" placeholder="email address" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
     </form>
