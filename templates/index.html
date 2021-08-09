@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sales Scientist</title>
+<style>
+body {
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<h1>Hyros Leads Survey</h1>
+<p>Have you gone through the Hyros Sales process?</p>
+<p>If so, we'd appreciate if you filled out this survey</p>
+
+        <div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+	<h2 style="color: blue;">What is the domain name of your business (ie. FrankKern.com)?</h2>
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Text" placeholder="please do not use spaces" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+    </form>
+   <br>
+   <br>
+  	<div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+	<h2 style="color: blue;">Please provide the url to the landing page of your latest ad campaign</h2>
+
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Text" placeholder="landing page url" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+    </form>
+    <br>
+   <br>
+  	<div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+	<h2 style="color: blue;">Have you purchased Hyros?</h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: orange;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: orange;}
+</style>
+</head>
+<body>
+
+<div class="dropdown">
+  <button class="dropbtn">Submit</button>
+  <div class="dropdown-content">
+    <a href="#">yes</a>
+    <a href="#">no</a>
+  </div>
+</div>
+
+</body>
+    <br>
+   <br>
+  	<div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+	<h2 style="color: blue;">What best describes the products/services that make the most of your revenue?</h2>
+    <div class="dropdown">
+  <button class="dropbtn">Submit</button>
+  <div class="dropdown-content">
+    <a href="#">Consulting</a>
+    <a href="#">Information\Coaching</a>
+    <a href="#">Tangible Products</a>
+    <a href="#">Other</a>
+  </div>
+</div>
+    <br>
+   <br>
+  	<div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+	<h2 style="color: blue;">How much do you spend on ads per month?</h2>
+
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="Number" placeholder="enter approximate amount" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+    </form>
+    <br>
+   <br>
+  	<div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+	<h2 style="color: blue;">What are your monthly hardcosts?</h2>
+    <h2 style="color: blue;">These exclude employees, rent, and adspend.</h2>
+
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="Number" placeholder="enter approximate amount" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+    </form>
+    <br>
+   <br>
+  	<div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+	<h2 style="color: blue;">How did you find out about Hyros?</h2>
+<div class="dropdown">
+  <button class="dropbtn">Submit</button>
+     <div class="dropdown-content">
+    <a href="#">Youtube</a>
+    <a href="#">Facebook</a>
+    <a href="#">Twitter</a>
+    <a href="#">Word Of Mouth</a>
+    <a href="#">Other</a>
+  </div>
+</div>
+<br>
+<br>
+<div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+    <h2 style="color: blue;">Enter your email to receive ... !</h2>
+
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="Text" placeholder="email address" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+    </form>
+    <br>
+   <br>
+    <div style="margin-left:10%; margin-right:10%;",  outline-color: powderblue;>
+        </div>
+    
+
+
+
+</body>
+</html>
