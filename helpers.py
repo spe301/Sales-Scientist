@@ -9,6 +9,8 @@ from mysql.connector import connect
 from bs4 import BeautifulSoup
 import requests
 import re
+import tweepy
+from textblob import TextBlob
 
 class individualFeatures:
     '''trigger words are words that are associated with a call to action. We are creating a list of them so that we can cout the number of trigger words a business has in their landing page. A lot of trigger words indicate multiple CTA's, this is a sign of spending too much on ads.'''
@@ -158,6 +160,51 @@ class Data:
             cursor.execute(query)
         connection.commit()
         pass
+
+    def analyzeTweets(self, keyword):
+        keys = open(r'C:\Users\aacjp\OneDrive\Desktop\ssh\Twitter\keys.txt').readlines()
+        a1 = keys[0].replace('\n', '') 
+        a2 = keys[1].replace('\n', '') 
+        c1 = keys[2].replace('\n', '') 
+        c2 = keys[3].replace('\n', '') 
+        auth = tweepy.OAuthHandler(c1, c2)
+        auth.set_access_token(a1, a2)
+        api = tweepy.API(auth)
+        topic = api.search(keyword)
+        polarity = []
+        subjectivity = []
+        for i in range(len(topic)):
+            tweet = topic[i]._json['text'].replace('@', '')
+            blob = TextBlob(tweet)
+            sent = blob.sentiment
+            polarity.append(sent[0])
+            subjectivity.append(sent[1])
+        mu_p = np.mean(polarity)
+        mu_s = np.mean(subjectivity)
+        std_p = np.std(polarity)
+        std_s = np.std(subjectivity)
+        return mu_p, mu_s, std_p, std_s
+
+    def getLeads(self):
+        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        cursor = connection.cursor()
+        q = 'SELECT name from survey;'
+        cursor.execute(q)
+        leads = cursor.fetchall()
+        return leads
+
+    def leadsOnTwitter(self):
+        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        cursor = connection.cursor()
+        leads = Data().getLeads()
+        for lead in leads:
+            k = lead[0].split('.')[0]
+            mu_p, mu_s, std_p, std_s = Data().analyzeTweets(k)
+            q = '''INSERT INTO social (name, avg_polarity, avg_subjectivity, std_polarity, std_subjectivity) 
+            VALUES ('{}', {}, {}, {}, {});'''.format(lead[0], mu_p, mu_s, std_p, std_s)
+            cursor.execute(q)
+            connection.commit()
+        pass
  
 
 class Scraping:
@@ -207,8 +254,3 @@ class Math:
     
     def cubicRoot(self, x):
         return x ** (1. / 3)
-
-connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
-cursor = connection.cursor()
-cursor.execute('''INSERT INTO test (col1, col2) VALUES ('Cardinal', 'Stavanger');''')
-print('ok')
