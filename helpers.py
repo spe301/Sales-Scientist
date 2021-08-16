@@ -205,6 +205,41 @@ class Data:
             cursor.execute(q)
             connection.commit()
         pass
+
+    def globalRank(self):
+        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        cursor = connection.cursor()
+        leads = Data().getLeads()
+        key = open(r'C:\Users\aacjp\OneDrive\Desktop\ssh\fullContact\access.txt').read()
+        client = FullContactClient(key)
+        for lead in leads:
+            req = client.company.enrich(domain=lead[0])
+            try:
+                rank = req.json()['details']['traffic']['countryRank']['global']['rank']
+            except: 
+                rank = None
+            q = '''INSERT INTO test (name, global) VALUES ('{}', {});'''.format(lead[0], rank)
+            cursor.execute(q)
+            connection.commit()
+
+    def fillLanding(self):
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
+        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        cursor = connection.cursor()
+        cursor.execute('''SELECT name, landingPage FROM survey;''')
+        results = cursor.fetchall()
+        for tup in results:
+            name = tup[0]
+            page = tup[1]
+            text = Scraping().lpCopy(page, headers)
+            words, triggers = Scraping().lpMetadata(text)
+            links = Scraping().countLinks(page, headers)
+            q = '''INSERT INTO landingpage (name, landingPage, words, triggers, links) 
+            VALUES ('{}', '{}', {}, {}, {});'''.format(name, page, words, triggers, links)
+            cursor.execute(q)
+            connection.commit()
+
+
  
 
 class Scraping:

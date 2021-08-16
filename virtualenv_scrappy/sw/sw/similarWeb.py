@@ -25,17 +25,21 @@ class Spider2Sql:
         percentDisplay = item['percentDisplay']
         percentSearchPaid = item['percentSearchPaid']
         topPlatform = item['topPlatform']
-        q = '''INSERT INTO similarweb (visits, monthlyVisitsChange, bounceRate, percentSearch, percentSocial, percentDisplay,
-        percentSearchPaid, dominantPlatform) VALUES ({}, {}, {}, {}, 
-                                                {}, {}, {});'''.format(visits, deltaVisits, bounceRate, percentSearch, percentSocial, percentDisplay,
-        percentSearchPaid)
-        self.curr.execute(q)
+        try:
+            q = '''INSERT INTO similarweb (visits, monthlyVisitsChange, bounceRate, percentSearch, percentSocial, percentDisplay,
+            percentSearchPaid, dominantPlatform) VALUES ({}, {}, {}, {}, 
+                                                    {}, {}, {}, '{}');'''.format(visits, deltaVisits, bounceRate, percentSearch, percentSocial, percentDisplay,
+            percentSearchPaid, topPlatform)
+            self.curr.execute(q)
+        except:
+            q = '''INSERT INTO similarweb (visits) VALUES ({});'''.format(visits)
+            self.curr.execute(q)
         self.conn.commit()
     
 class PostsSpider(scrapy.Spider):
     name = 'posts'
-    f = open(r'C:\Users\aacjp\Spencer\similarWeb.txt').read()
-    start_urls = f.split(' ')[27:31] #-1
+    f = open(r'C:\Users\aacjp\Sales-Scientist\similarWeb.txt').read()
+    start_urls = f.split(' ')[:5] #-1
     
     def parse(self, response):
         return response.css('a.href').getall()
@@ -68,7 +72,7 @@ class PostsSpider(scrapy.Spider):
             percentSocial = None
             percentDisplay = None
             percentSearchPaid = None
-            topPlatform = None
+            topPlatform = 'Facebook'
         results = {'visits': visits, 'deltaVisits': deltaVisits, 'bounceRate': bounceRate, 
                'percentSearch': percentSearch, 'percentSocial': percentSocial, 'percentDisplay': percentDisplay, 
                'percentSearchPaid': percentSearchPaid, 'topPlatform': topPlatform}
