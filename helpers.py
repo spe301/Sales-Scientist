@@ -218,7 +218,7 @@ class Data:
                 rank = req.json()['details']['traffic']['countryRank']['global']['rank']
             except: 
                 rank = None
-            q = '''INSERT INTO test (name, global) VALUES ('{}', {});'''.format(lead[0], rank)
+            q = '''INSERT INTO fullcontact (name, global) VALUES ('{}', {});'''.format(lead[0], rank)
             cursor.execute(q)
             connection.commit()
 

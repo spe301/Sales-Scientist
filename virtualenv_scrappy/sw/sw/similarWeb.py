@@ -9,7 +9,7 @@ class Spider2Sql:
         self.create_connection()
         
     def create_connection(self):
-        self.conn = connect(host='localhost', user='root', password='Raptor//Kona9', database='sys')
+        self.conn = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
         self.curr = self.conn.cursor()
         
     def process_item(self, item, Spider):
@@ -26,10 +26,10 @@ class Spider2Sql:
         percentSearchPaid = item['percentSearchPaid']
         topPlatform = item['topPlatform']
         try:
-            q = '''INSERT INTO similarweb (visits, monthlyVisitsChange, bounceRate, percentSearch, percentSocial, percentDisplay,
-            percentSearchPaid, dominantPlatform) VALUES ({}, {}, {}, {}, 
-                                                    {}, {}, {}, '{}');'''.format(visits, deltaVisits, bounceRate, percentSearch, percentSocial, percentDisplay,
-            percentSearchPaid, topPlatform)
+            q = '''INSERT INTO similarweb (percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
+            visits, monthlyVisitsChange, bounceRate, dominantPlatform) VALUES ({}, {}, {}, {}, 
+            {}, {}, {}, '{}');'''.format(percentSocial, percentDisplay, percentSearchPaid, percentSearch, 
+            visits, deltaVisits, bounceRate, topPlatform)
             self.curr.execute(q)
         except:
             q = '''INSERT INTO similarweb (visits) VALUES ({});'''.format(visits)
@@ -38,11 +38,11 @@ class Spider2Sql:
     
 class PostsSpider(scrapy.Spider):
     name = 'posts'
-    f = open(r'C:\Users\aacjp\Sales-Scientist\similarWeb.txt').read()
-    start_urls = f.split(' ')[:5] #-1
+    f = open(r'C:\Users\aacjp\Sales-Scientist\leads.txt').read()
+    start_urls = f.split(',')[:-1] #-1
     
-    def parse(self, response):
-        return response.css('a.href').getall()
+    '''def parse(self, response):
+        return response.css('a.href').getall()'''
     
     def parse(self, response):
         overview = response.css('span.engagementInfo-valueNumber.js-countValue::text').getall()
