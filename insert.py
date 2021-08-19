@@ -4,6 +4,14 @@ from mysql.connector import connect
 from helpers import Data, Scraping
 import pandas as pd
 
+
+def clear(tables):
+    connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+    cursor = connection.cursor()
+    for table in tables:
+        cursor.execute('''DELETE FROM {};'''.format(table))
+        connection.commit()
+
 def insert(quiet=True):
     connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
     cursor = connection.cursor()
@@ -32,7 +40,9 @@ def writeLeads():
     f.close()
 
 def run(quiet=True):
-    #insert(quiet=quiet)
+    tables = ['social', 'fullcontact', 'landingpage', 'similarweb']
+    clear(tables)
+    insert(quiet=quiet)
     writeLeads()
 
 run()
