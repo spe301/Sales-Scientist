@@ -109,4 +109,4 @@ class Wrappers:
         df3.to_csv('{}\{}.csv'.format(path, title))
         pass
 
-Wrappers().db2csv('check')
+#Wrappers().db2csv('check')

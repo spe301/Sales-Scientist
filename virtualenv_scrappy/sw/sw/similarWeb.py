@@ -39,7 +39,7 @@ class Spider2Sql:
 class PostsSpider(scrapy.Spider):
     name = 'posts'
     f = open(r'C:\Users\aacjp\Sales-Scientist\leads.txt').read()
-    start_urls = f.split(',')[:-1] #-1
+    start_urls = f.split(',')[7:12] #-1
     
     '''def parse(self, response):
         return response.css('a.href').getall()'''
