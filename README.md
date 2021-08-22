@@ -3,6 +3,8 @@
 ## Business case
 Hyros is a software that allows advertisers and digital marketers to accuratley attribute the return on their advertising (ROAS) accross platforms. The company has been delivering amazing results for their customers who mostly come in by word of mouth. However they are looking towards outbound outreach to scale higher and are looking to hire more salespeople. Hyros wants to grow and it can only scale so high with word of mouth so it's ramping up outbound strategies. The goal here is to see if we can make the sales process more efficient, this way the sales team can retain or increase it's closing rate and Hyros won't need to make as many hires; 1) save time, 2) save money, 3) more closing = more money. 
 
+In addition to expanding their sales team Hyros has also started an affiliate program where digital marketing agencies earn a 20% comission for selling the software to their clients. Before the program these agencies would buy and pay for Hyros internally so it's really a win-win. This affiliate program acts as an external sales team which presents an opportunity for this work product to get used without having buy-in from the company!
+
 ## The problem
 Finding the right prospects is time consuming. This is a common problem in sales and marketing, however this especially is an issue for Hyros because they are selective about the customers they choose to onboard. How much would it suck to expand a sales team only to have them bring in customers that are unqualified or unlikley to benefit from the service? a lot! Getting the wrong customers on sales calls will decrease closing rates, especially SQL-to-MQL, at best and create negative customer experiences that reflect badly on the company at worst.
 
@@ -18,7 +20,7 @@ I am going to build a binary classification model that scores leads on a scale o
 <img src="images/Screenshot (74).png/">
 
 ## Feasability
-This project must have buy in from Hyros to be able to be  compleated. That being said, I can pull data from known Hyros customers. I can find customers of Anytrack.io, a rival product, as well as generate slightly different datapoints to simulate leads that didn't close. I can seek buy in from Hyros to get access to their internal data to make the project 100%. This is risky business because I don't know what I'll be left with if they don't like or want it. I am going to continue with the project as of now but I will have to be flexible moving forward. 
+With the data that I have it isn't realistic to have a very good model as I'm only able to collect 60-90 datapoints. That being said if I can develop a scrappy solution and sell affiliates on the idea I will be able to create a dataflywheel. Affiliates will be able to enter their clients into the system and there will be more data, leading to better preformance. The main bottlenecks of this project is getting the leads and finding the adspend of each lead in a programatic manner.
 
 ## KPI's and metrics
 **Business KPI's**
@@ -77,10 +79,12 @@ This project must have buy in from Hyros to be able to be  compleated. That bein
 * landing page: 20, 21, 22
 * Survey: 1, 2, 3, 4, 5, 6?, 7?, 8?, 9?, 10?
 * Dominant social media platform (we will just twitter for now because it's easier): 18, 19
-* Zoominfo: 23
+* fullcontact: 23
 
 ## data collection strategy
-The inital dataset, MockHyros.csv, is a very small dataset of 60 rows that I manually collected. The reason for this was that I was struggling with the webscraping and data pipeline and I desperatley wanted a dataset that I could analyze. This way I could have data to work with so that I would be motivated to work on my statistics skills and keep my data analytics skills sharp while I worked on getting my scrapers to work. Next, I used Systematic Oversampling Technique to generate fake datapoints augmenting my dataset to 1020 rows aka samples. In order to collect more data I will conduct a survey for those who have gone through the Hyros sales process, participants will be asked a few questions which will be stored into a database. These results will give the data pipeline the knowledge nessecary to connect to all the data sources which will be used to insert the rest of the information into the database.
+The inital dataset, check6.csv, is a very small dataset of 60 rows that I manually collected. The reason for this was that I was struggling with the webscraping and data pipeline and I desperatley wanted a dataset that I could analyze. This way I could have data to work with so that I would be motivated to work on my statistics skills and keep my data analytics skills sharp while I worked on getting my scrapers to work. Next, I used Systematic Oversampling Technique to generate fake datapoints augmenting my dataset to 1020 rows aka samples. In order to collect more data I will conduct a survey for those who have gone through the Hyros sales process, participants will be asked a few questions which will be stored into a database. These results will give the data pipeline the knowledge nessecary to connect to all the data sources which will be used to insert the rest of the information into the database.
+
+Moving forward I will need to pay for access to Similarweb's api in order to make this scalable, fortunatley my tutoring side hustle will give me the funding nessecary. I have also built a leadgen survey with flask that will ask incoming leads for their latest landing page, revenue, adspend, business domain, and business model (ecommerce, consulting, info/coaching, other) and store the results in a mysql database, api calls will also be made to twitter, fullcontact, and similarweb and the data will be stored in seperate tables within the database. Finally, a python script takes all the data, some features will also be combined to form the aggregated features as listed above.
 
 **Survey Questions**
 1. What is the domain name of your business? (ie. FrankKern.com)
@@ -95,7 +99,14 @@ The inital dataset, MockHyros.csv, is a very small dataset of 60 rows that I man
 **Where to find participants?**
 1. The Hyros facebook group (this is a private group and may be hard to join)
 2. Join discussions in relevant groups
-3. Run targeted ads on Facebook
+3. Join the Hyros affiliates facebook group
+**bonus crazy idea** 
+work as an independant sales rep and have my prospects fill out the survey, I can invest the comissions into the project. Also a good chance to improve communication skills and potentially better my odds at getting buy-in.
 
 ## types of features
 Throughout our dataset we have 3 main types of features. These are qualification, information, and relationship. Qualification features determine if a customer is qualified to do business with us in the first place, these include adspend, type of business, and number of paid traffic platforms. Information features are used to help estimate the results Hyros can bring to a particular customer based on the preformance of the customer's digital marketing, combined with qualification features we can develop a pricing model to predict what that customer could be worth to us. The third type of feature is Relationship features, these features are near inpossible to access without buy in, these inform us on the relationship between the customer and Hyros. These include things like 'source of lead' and other details surrounding the customer's behaivor throughout the sales process, With these features we can better predict a lead's probability of closing although it is likley that we can still do reasonably well just with Qualification and Information features.
+
+## model selection
+I'm very early in this project but I've dabbled with a very simple bayseian model that I coded from scratch.
+
+see video here: https://www.youtube.com/watch?v=CaodNoFFX18&t=158s
