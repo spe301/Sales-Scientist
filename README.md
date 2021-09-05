@@ -3,8 +3,6 @@
 ## Business case
 Hyros is a software that allows advertisers and digital marketers to accuratley attribute the return on their advertising (ROAS) accross platforms. The company has been delivering amazing results for their customers who mostly come in by word of mouth. However they are looking towards outbound outreach to scale higher and are looking to hire more salespeople. Hyros wants to grow and it can only scale so high with word of mouth so it's ramping up outbound strategies. The goal here is to see if we can make the sales process more efficient, this way the sales team can retain or increase it's closing rate and Hyros won't need to make as many hires; 1) save time, 2) save money, 3) more closing = more money. 
 
-In addition to expanding their sales team Hyros has also started an affiliate program where digital marketing agencies earn a 20% comission for selling the software to their clients. Before the program these agencies would buy and pay for Hyros internally so it's really a win-win. This affiliate program acts as an external sales team which presents an opportunity for this work product to get used without having buy-in from the company!
-
 ## The problem
 Finding the right prospects is time consuming. This is a common problem in sales and marketing, however this especially is an issue for Hyros because they are selective about the customers they choose to onboard. How much would it suck to expand a sales team only to have them bring in customers that are unqualified or unlikley to benefit from the service? a lot! Getting the wrong customers on sales calls will decrease closing rates, especially SQL-to-MQL, at best and create negative customer experiences that reflect badly on the company at worst.
 
@@ -20,7 +18,7 @@ I am going to build a binary classification model that scores leads on a scale o
 <img src="images/Screenshot (74).png/">
 
 ## Feasability
-With the data that I have it isn't realistic to have a very good model as I'm only able to collect 60-90 datapoints. That being said if I can develop a scrappy solution and sell affiliates on the idea I will be able to create a dataflywheel. Affiliates will be able to enter their clients into the system and there will be more data, leading to better preformance. The main bottlenecks of this project is getting the leads and finding the adspend of each lead in a programatic manner.
+With the data that I have it isn't realistic to have a very good model as I'm only able to collect 60-90 datapoints. That being said if I can conduct a survey for businesses that have gone through the sales process at hyros create a dataflywheel. If I'm able to find the leads that didn't purchase it will leading to better preformance in the model and a more accurate alalysis overall. The main bottlenecks of this project is getting the leads and finding the adspend of each lead in a programatic manner.
 
 ## KPI's and metrics
 **Business KPI's**
@@ -107,7 +105,7 @@ work as an independant sales rep and have my prospects fill out the survey, I ca
 Throughout our dataset we have 3 main types of features. These are qualification, information, and relationship. Qualification features determine if a customer is qualified to do business with us in the first place, these include adspend, type of business, and number of paid traffic platforms. Information features are used to help estimate the results Hyros can bring to a particular customer based on the preformance of the customer's digital marketing, combined with qualification features we can develop a pricing model to predict what that customer could be worth to us. The third type of feature is Relationship features, these features are near inpossible to access without buy in, these inform us on the relationship between the customer and Hyros. These include things like 'source of lead' and other details surrounding the customer's behaivor throughout the sales process, With these features we can better predict a lead's probability of closing although it is likley that we can still do reasonably well just with Qualification and Information features.
 
 ## EDA
-I've made a dashboard in tableau that helps sales reps visualize the difference between customers and non-customers to better understand their leads/prospects https://public.tableau.com/app/profile/spencer.holley/viz/HyrosLeadsSample/HyrosLeadsSample
+I've made a dashboard in tableau that helps sales reps visualize the difference between customers and non-customers to better understand their leads/prospects. This current dashboard compares a sample of known customers of Hyros against an equally sized sample of similar businesses that are not customers of Hyros. https://public.tableau.com/app/profile/spencer.holley/viz/HyrosLeadsSample/HyrosLeadsSample
 
 ## model selection
 I'm very early in this project but I've dabbled with a very simple bayseian model that I coded from scratch.
