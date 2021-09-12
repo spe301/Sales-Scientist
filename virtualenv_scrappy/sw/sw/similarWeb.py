@@ -9,7 +9,10 @@ class Spider2Sql:
         self.create_connection()
         
     def create_connection(self):
-        self.conn = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        self.conn = connect(host='us-cdbr-east-04.cleardb.com', 
+    user='b7a35a7346aea6', 
+    password='a2aa8c36', 
+    database='heroku_38066fac900fae9')
         self.curr = self.conn.cursor()
         
     def process_item(self, item, Spider):

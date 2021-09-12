@@ -74,7 +74,10 @@ class Features:
 class Wrappers:
     
     def db2df(self):
-        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        connection = connect(host='us-cdbr-east-04.cleardb.com', 
+    user='b7a35a7346aea6', 
+    password='a2aa8c36', 
+    database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         survey = pd.read_sql('''SELECT * FROM survey;''', connection)
         social = pd.read_sql('''SELECT * FROM social;''', connection).drop(['name'], axis='columns')

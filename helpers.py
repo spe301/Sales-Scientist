@@ -98,8 +98,10 @@ class aggregateFeatures:
         return af.profit(revenue, adSpend, hardcosts) / revenue
     
     def lpc(database='leads', table='landingpage'):
-        password = input('Enter password: ')
-        connection = connect(host='localhost', user='root', password=password, database=database)
+        connection = connect(host='us-cdbr-east-04.cleardb.com', 
+        user='b7a35a7346aea6', 
+        password='a2aa8c36', 
+        database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         q = 'select words, triggers, links from {};'.format(table)
         cursor.execute(q)
@@ -132,15 +134,21 @@ class Data:
         return pd.concat([pos2, neg2])
     
     def getCol(self, host, user, password, database, cols):
-        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        connection = connect(host='us-cdbr-east-04.cleardb.com', 
+        user='b7a35a7346aea6', 
+        password='a2aa8c36', 
+        database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         cursor.execute('select {} from survey;'.format(cols))
         return cursor.fetchall()
 
     # I need to inspect the holdup at results[54]
     def lpContent(self, headers):
-        results = Data().getCol('localhost', 'root', 'Raptor//Kona9', 'leads', 'name, landingPage')
-        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        results = Data().getCol('us-cdbr-east-04.cleardb.com', 'b7a35a7346aea6', 'a2aa8c36', 'heroku_38066fac900fae9', 'name', 'landingPage')
+        connection = connect(host='us-cdbr-east-04.cleardb.com', 
+        user='b7a35a7346aea6', 
+        password='a2aa8c36', 
+        database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         queries = []
         for i in range(len(results)):
@@ -186,7 +194,7 @@ class Data:
         return mu_p, mu_s, std_p, std_s
 
     def getLeads(self):
-        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        connection = connect(host='us-cdbr-east-04.cleardb.com', user='b7a35a7346aea6', password='a2aa8c36', database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         q = 'SELECT name from survey;'
         cursor.execute(q)
@@ -194,7 +202,10 @@ class Data:
         return leads
 
     def leadsOnTwitter(self):
-        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        connection = connect(host='us-cdbr-east-04.cleardb.com', 
+        user='b7a35a7346aea6', 
+        password='a2aa8c36', 
+        database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         leads = Data().getLeads()
         for lead in leads:
@@ -202,12 +213,20 @@ class Data:
             mu_p, mu_s, std_p, std_s = Data().analyzeTweets(k)
             q = '''INSERT INTO social (name, avg_polarity, avg_subjectivity, std_polarity, std_subjectivity) 
             VALUES ('{}', {}, {}, {}, {});'''.format(lead[0], mu_p, mu_s, std_p, std_s)
-            cursor.execute(q)
+            try:
+                cursor.execute(q)
+            except:
+                q = '''INSERT INTO social (name, avg_polarity, avg_subjectivity, std_polarity, std_subjectivity)
+                 VALUES ('{}', {}, {}, {}, {});'''.format(lead[0], 0, 0, 0, 0)
+                cursor.execute(q)
             connection.commit()
         pass
 
     def globalRank(self):
-        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        connection = connect(host='us-cdbr-east-04.cleardb.com', 
+        user='b7a35a7346aea6', 
+        password='a2aa8c36', 
+        database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         leads = Data().getLeads()
         key = open(r'C:\Users\aacjp\OneDrive\Desktop\ssh\fullContact\access.txt').read()
@@ -219,12 +238,18 @@ class Data:
             except: 
                 rank = None
             q = '''INSERT INTO fullcontact (name, global) VALUES ('{}', {});'''.format(lead[0], rank)
-            cursor.execute(q)
+            try:
+                cursor.execute(q)
+            except:
+                print(lead[0], rank)
             connection.commit()
 
     def fillLanding(self):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
-        connection = connect(host='localhost', user='root', password='Raptor//Kona9', database='leads')
+        connection = connect(host='us-cdbr-east-04.cleardb.com', 
+        user='b7a35a7346aea6', 
+        password='a2aa8c36', 
+        database='heroku_38066fac900fae9')
         cursor = connection.cursor()
         cursor.execute('''SELECT name, landingPage FROM survey;''')
         results = cursor.fetchall()
