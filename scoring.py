@@ -35,8 +35,10 @@ class Prediction:
 		return temp
 
 	def ScoreLeads(self, X):
+		n = len(X)
 		pr = Prediction()
 		X = Data().Preprocess(X)
+		update = X
 		probs = np.array(pr.Probability(X))
 		opps = np.array(pr.Opportunity(X))
 		X['score'] = probs+opps
@@ -57,7 +59,11 @@ class Prediction:
 					priority.append('low')
 		X['action'] = action
 		X['priority'] = priority
-		return X
+		update['customer'] = X['score'].apply(lambda x: int(round(x/10)))
+		update = update.drop(['score', 'action', 'priority'], axis='columns')
+		original = X.drop(['score', 'action', 'priority'], axis='columns').iloc[:n]
+		X2 = pd.concat([original, update])
+		return X, X2
 
 class Data:
 
@@ -71,4 +77,10 @@ class Data:
 		return X4
 
 X = pd.read_csv(r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv').drop(['Unnamed: 0', 'customer'], axis='columns')
-print(Prediction().ScoreLeads(X))
+
+def WrapScoring(data_path, leads_path):
+	X = pd.read_csv(data_path).drop(['Unnamed: 0', 'customer'], axis='columns')
+	leads, data = Prediction().ScoreLeads(X)
+	data2.to_csv(path)
+	leads.csv(leads_path)
+	return leads
