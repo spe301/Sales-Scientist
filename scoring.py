@@ -81,6 +81,19 @@ X = pd.read_csv(r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv').drop(['Un
 def WrapScoring(data_path, leads_path):
 	X = pd.read_csv(data_path).drop(['Unnamed: 0', 'customer'], axis='columns')
 	leads, data = Prediction().ScoreLeads(X)
-	data2.to_csv(path)
-	leads.csv(leads_path)
-	return leads
+	X = data.drop(['customer'], axis='columns')
+	y = data['customer']
+	path = r'C:\Users\aacjp\Sales-Scientist\clf.pkl'
+	model = joblib.load(path)
+	model.fit(X, y) 
+	data.to_csv(path)
+	leads.to_csv(leads_path)
+	print('showing the last 5 results')
+	print('---------------------------')
+	print()
+	return leads.tail(5)
+
+
+dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
+print(WrapScoring(dp, lp))
