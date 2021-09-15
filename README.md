@@ -1,24 +1,24 @@
 # Lead Scoring for Hyros
 
 ## Business case
-Hyros is a software that allows advertisers and digital marketers to accuratley attribute the return on their advertising (ROAS) accross platforms. The company has been delivering amazing results for their customers who mostly come in by word of mouth. However they are looking towards outbound outreach to scale higher and are looking to hire more salespeople. Hyros wants to grow and it can only scale so high with word of mouth so it's ramping up outbound strategies. The goal here is to see if we can make the sales process more efficient, this way the sales team can retain or increase it's closing rate and Hyros won't need to make as many hires; 1) save time, 2) save money, 3) more closing = more money. 
+Hyros is a software that allows advertisers and digital marketers to accurately attribute the return on their advertising (ROAS) across platforms. The company has been delivering amazing results for their customers who mostly come in by word of mouth. However, they are looking towards outbound outreach to scale higher and are looking to hire more salespeople. Hyros wants to grow, and it can only scale so high with word of mouth so it's ramping up outbound strategies. The goal here is to see if we can make the sales process more efficient, this way the sales team can retain or increase its closing rate and Hyros won't need to make as many hires; 1) save time, 2) save money, 3) more closing = more money.
 
 ## The problem
-Finding the right prospects is time consuming. This is a common problem in sales and marketing, however this especially is an issue for Hyros because they are selective about the customers they choose to onboard. How much would it suck to expand a sales team only to have them bring in customers that are unqualified or unlikley to benefit from the service? a lot! Getting the wrong customers on sales calls will decrease closing rates, especially SQL-to-MQL, at best and create negative customer experiences that reflect badly on the company at worst.
+Finding the right prospects is time consuming. This is a common problem in sales and marketing; however, this especially is an issue for Hyros because they are selective about the customers they choose to onboard. How much would it suck to expand a sales team only to have them bring in customers that are unqualified or unlikely to benefit from the service? a lot! Getting the wrong customers on sales calls will decrease closing rates, especially SQL-to-MQL, at best and create negative customer experiences that reflect badly on the company at worst.
 
 ## Requirements
-* Be able to quantify the quality of a given lead.
-* Able to score roughly the amount of leads Hyros gets a day at one time, I estimate that they get about 70 leads per day. Because of their rapid growth goals I will aim to make sure the models can score 200 leads at one time in a reasonable time frame.
-* Speed is a good selling point but scoring n leads at a time is a higher priority
-* Most of our users will be on laptops so the application will be designed with that setup in mind.
+* •	Be able to quantify the quality of a given lead.
+•	Able to score roughly the number of leads Hyros gets a day at one time, I estimate that they get about 70 leads per day. Because of their rapid growth goals, I will aim to make sure the models can score 200 leads at one time in a reasonable time frame.
+•	Speed is a good selling point but scoring n leads at a time is a higher priority
+•	Most of our users will be on laptops so the application will be designed with that setup in mind.
 
 ## Solution
-I am going to build a binary classification model that scores leads on a scale of 0 to 1, additionally I will build a regression model of sorts to predict the monthly value that Hyros could bring to the lead. This way the team can see what leads are likley to convert and which ones could bring Hyros more revenue should they convert. These values will be aggregated together somehow and will be scaled from 1 to 10. The application will also concatenate the predictions with the Sales Team's spreadsheet. 
+I am going to build a binary classification model that scores leads on a scale of 0 to 1, additionally I will build a regression model of sorts to predict the monthly value that Hyros could bring to the lead. This way the team can see what leads are likely to convert and which ones could bring Hyros more revenue should they convert. These values will be aggregated together somehow and will be scaled from 1 to 10. The application will also concatenate the predictions with the Sales Team's spreadsheet. 
 
 <img src="images/process2.png/">
 
 ## Feasability
-With the data that I have it isn't realistic to have a very good model as I'm only able to collect 60-90 datapoints. That being said if I can conduct a survey for businesses that have gone through the sales process at hyros create a dataflywheel. If I'm able to find the leads that didn't purchase it will leading to better preformance in the model and a more accurate alalysis overall. The main bottlenecks of this project is getting the leads and finding the adspend of each lead in a programatic manner.
+With the data that I have it isn't realistic to have a very good model as I'm only able to collect 60-90 datapoints. If I can conduct a survey for businesses that have gone through the sales process at hyros create a data flywheel. If I'm able to find the leads that didn't purchase it will be leading to better performance in the model and a more accurate analysis overall. The main bottleneck of this project is getting the leads and finding the ad spend of each lead in a programmatic manner.
 
 ## KPI's and metrics
 **Business KPI's**
@@ -31,10 +31,6 @@ With the data that I have it isn't realistic to have a very good model as I'm on
 **Model KPI's**
 1. Precision
 2. Mean Absolute Error
-
-# Questions for Sales reps at Software companies
-1. If I were to make a lead scoring app for sales teams to use how would it need to work to be practical? About how many leads should it be able to score at one time? Does it need to be fast or it it okay is it runs a bit slower? Do you think the users would be more likley to use desktops or laptops?
-3. As a [title] at [company] What do you think are the main factors that go into selling a high ticket software product? What attributes do you look at in a prospect?
 
 # Data needed
 ## individual features
@@ -80,9 +76,9 @@ With the data that I have it isn't realistic to have a very good model as I'm on
 * fullcontact: 23
 
 ## data collection strategy
-The inital dataset, check6.csv, is a very small dataset of 60 rows that I manually collected. The reason for this was that I was struggling with the webscraping and data pipeline and I desperatley wanted a dataset that I could analyze. This way I could have data to work with so that I would be motivated to work on my statistics skills and keep my data analytics skills sharp while I worked on getting my scrapers to work. Next, I used Systematic Oversampling Technique to generate fake datapoints augmenting my dataset to 1020 rows aka samples. In order to collect more data I will conduct a survey for those who have gone through the Hyros sales process, participants will be asked a few questions which will be stored into a database. These results will give the data pipeline the knowledge nessecary to connect to all the data sources which will be used to insert the rest of the information into the database.
+The initial dataset, check6.csv, is a very small dataset of 60 rows that I manually collected. The reason for this was that I was struggling with the web scraping and data pipeline and I desperately wanted a dataset that I could analyze. This way I could have data to work with so that I would be motivated to work on my statistics skills and keep my data analytics skills sharp while I worked on getting my scrapers to work. To collect more data, I will conduct a survey for those who have gone through the Hyros sales process, participants will be asked a few questions which will be stored into a database. These results will give the data pipeline the knowledge necessary to connect to all the data sources which will be used to insert the rest of the information into the database.
 
-Moving forward I will need to pay for access to Similarweb's api in order to make this scalable, fortunatley my tutoring side hustle will give me the funding nessecary. I have also built a leadgen survey with flask that will ask incoming leads for their latest landing page, revenue, adspend, business domain, and business model (ecommerce, consulting, info/coaching, other) and store the results in a mysql database, api calls will also be made to twitter, fullcontact, and similarweb and the data will be stored in seperate tables within the database. Finally, a python script takes all the data, some features will also be combined to form the aggregated features as listed above.
+Moving forward I will need to pay for access to Similar web’s API in order to make this scalable, fortunately my tutoring side hustle will give me the funding necessary. I have also built a leadgen survey with flask that will ask incoming leads for their latest landing page, revenue, ad spend, business domain, and business model (ecommerce, consulting, info/coaching, other) and store the results in a MySQL database, API calls will also be made to twitter, full contact, and similar web and the data will be stored in separate tables within the database. Finally, a python script takes all the data, some features will also be combined to form the aggregated features as listed above.
 
 **Survey Questions**
 1. What is the domain name of your business? (ie. FrankKern.com)
@@ -98,11 +94,9 @@ Moving forward I will need to pay for access to Similarweb's api in order to mak
 1. The Hyros facebook group (this is a private group and may be hard to join)
 2. Join discussions in relevant groups
 3. Join the Hyros affiliates facebook group
-**bonus crazy idea** 
-work as an independant sales rep and have my prospects fill out the survey, I can invest the comissions into the project. Also a good chance to improve communication skills and potentially better my odds at getting buy-in.
 
 ## types of features
-Throughout our dataset we have 3 main types of features. These are qualification, information, and relationship. Qualification features determine if a customer is qualified to do business with us in the first place, these include adspend, type of business, and number of paid traffic platforms. Information features are used to help estimate the results Hyros can bring to a particular customer based on the preformance of the customer's digital marketing, combined with qualification features we can develop a pricing model to predict what that customer could be worth to us. The third type of feature is Relationship features, these features are near inpossible to access without buy in, these inform us on the relationship between the customer and Hyros. These include things like 'source of lead' and other details surrounding the customer's behaivor throughout the sales process, With these features we can better predict a lead's probability of closing although it is likley that we can still do reasonably well just with Qualification and Information features.
+Throughout our dataset we have 3 main types of features. These are qualification, information, and relationship. Qualification features determine if a customer is qualified to do business with us in the first place, these include ad spend, type of business, and number of paid traffic platforms. Information features are used to help estimate the results Hyros can bring to a particular customer based on the performance of the customer's digital marketing, combined with qualification features we can develop a pricing model to predict what that customer could be worth to us. The third type of feature is Relationship features, these features are near impossible to access without buy in, these inform us on the relationship between the customer and Hyros. These include things like 'source of lead' and other details surrounding the customer's behavior throughout the sales process, With these features we can better predict a lead's probability of closing although it is likely that we can still do reasonably well just with Qualification and Information features.
 
 ## EDA
 I've made a dashboard in tableau that helps sales reps visualize the difference between customers and non-customers to better understand their leads/prospects. This current dashboard compares a sample of known customers of Hyros against an equally sized sample of similar businesses that are not customers of Hyros. https://public.tableau.com/app/profile/spencer.holley/viz/HyrosLeadsSample/HyrosLeadsSample
