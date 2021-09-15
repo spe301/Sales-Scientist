@@ -15,7 +15,7 @@ Finding the right prospects is time consuming. This is a common problem in sales
 ## Solution
 I am going to build a binary classification model that scores leads on a scale of 0 to 1, additionally I will build a regression model of sorts to predict the monthly value that Hyros could bring to the lead. This way the team can see what leads are likley to convert and which ones could bring Hyros more revenue should they convert. These values will be aggregated together somehow and will be scaled from 1 to 10. The application will also concatenate the predictions with the Sales Team's spreadsheet. 
 
-<img src="images/Screenshot (74).png/">
+<img src="images/process.png/">
 
 ## Feasability
 With the data that I have it isn't realistic to have a very good model as I'm only able to collect 60-90 datapoints. That being said if I can conduct a survey for businesses that have gone through the sales process at hyros create a dataflywheel. If I'm able to find the leads that didn't purchase it will leading to better preformance in the model and a more accurate alalysis overall. The main bottlenecks of this project is getting the leads and finding the adspend of each lead in a programatic manner.
