@@ -1,42 +1,22 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
-from scoring import Prediction
-
-def ModelReadyString(text_str, pad):
-    '''converts an individual unit of text into tokenized sequences'''
-    text = [text_str]
-    t = preprocessing.text.Tokenizer()
-    t.fit_on_texts(text)
-    tokens = t.texts_to_sequences(text)
-    tokens2 = preprocessing.sequence.pad_sequences(tokens, maxlen=pad)
-    return tokens2
-
-def GetText(url):
-   '''Scrapes a wikikedia article'''
-   source = urlopen(url).read()
-   soup = BeautifulSoup(source, 'lxml')
-   text = soup.findAll('p')
-   article = ''
-   for i in range(len(text)):
-       segment = text[i].text
-       article += segment.replace('\n', '').replace('\'', '').replace(')', '')
-       article = article.lower()
-       clean = re.sub("([\(\[]).*?([\)\]])", '', article)
-       clean2 = re.sub(r'\[(^)*\]', '', clean)
-   return clean
+from flask import Flask, request, jsonify, render_template, Response
+from scoring import WrapScoring
+import pandas as pd 
+import csv
 
 app = Flask(__name__)
-model = models.load_model('dm2.h5')
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    user_input = request.form['filename']
-    leads, data = Prediction().ScoreLeads(X)
-    return render_template('index.html', leads, data)
+@app.route('/data', methods=['POST'])
+def data():
+    f = request.form['csvfile']
+    #with open(f) as file:
+    data = []
+    csvfile = pd.DataFrame(csv.reader(f))
+    return render_template('index.html', data=csvfile.shape)
 
 if __name__ == "__main__":
     app.run(debug=True, threaded=True)

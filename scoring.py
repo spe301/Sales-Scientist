@@ -96,4 +96,3 @@ def WrapScoring(data_path, leads_path):
 
 dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
 lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
-print(WrapScoring(dp, lp))
