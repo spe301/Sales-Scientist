@@ -20,7 +20,7 @@ def data():
     dp = base + '_leads'
     lp = base + '_actions'
     data = WrapScoring(data, dp, lp)
-    return render_template('index.html', data=data.shape)
+    return render_template('index.html', data=data)
 
 if __name__ == "__main__":
     app.run(debug=True, threaded=True)

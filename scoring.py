@@ -16,9 +16,10 @@ class Prediction:
 			model = joblib.load(path)
 		except:
 			path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-			x = Data().Preprocess(pd.read_csv(path).drop(['Unnamed: 0', 'customer'], axis='columns'))
+			x = Data().Preprocess(pd.read_csv(path).drop(['customer'], axis='columns'))
 			Y = pd.read_csv(path)['customer']
 			model = DecisionTreeClassifier().fit(x, Y)
+		print(x.columns, X.columns)
 		predictions = model.predict_proba(X)[:, 1]
 		temp = pd.DataFrame(predictions)
 		temp.columns = ['probabilities']
@@ -90,25 +91,16 @@ X = pd.read_csv(r'C:\Users\aacjp\Sales-Scientist\datasets\check7.csv')
 
 def WrapScoring(X, data_path, leads_path):
 	original_path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-	leads, data = Prediction().ScoreLeads(X)
-	X = data.drop(['customer'], axis='columns')
-	y = data['customer']
-	path = r'C:\Users\aacjp\Sales-Scientist\clf.pkl'
-	try:
-		model = joblib.load(path)
-	except:
-		path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-		x = Data().Preprocess(pd.read_csv(path).drop(['Unnamed: 0', 'customer'], axis='columns'))
-		Y = pd.read_csv(path)['customer']
-		model = DecisionTreeClassifier().fit(x, Y)
-	model.fit(X, y)
-	df = pd.read_csv(original_path)
-	df2 = pd.concat([df, data])
+	leads, _ = Prediction().ScoreLeads(X)
+	data = leads.drop(['score', 'action', 'priority'], axis='columns')
+	df = Data().Preprocess(pd.read_csv(original_path))
+	data.columns = list(df.columns)
+	df2 = df.append(data)
+	#df2.to_csv(data_path)
 	#leads.to_csv(leads_path)
-	#data.to_csv(data_path)
-	return df2
+	return leads
 
 
-#dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-#lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
-#print(WrapScoring(X, dp, lp))
+dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
+print(WrapScoring(X, dp, lp))
