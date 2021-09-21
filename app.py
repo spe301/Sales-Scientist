@@ -12,11 +12,15 @@ def home():
 
 @app.route('/data', methods=['POST'])
 def data():
-    f = request.form['csvfile']
-    #with open(f) as file:
-    data = []
-    csvfile = pd.DataFrame(csv.reader(f))
-    return render_template('index.html', data=csvfile.shape)
+    #dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+    #lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
+    path = request.form['Text']
+    data = pd.read_csv(path)
+    base = path.split('.')[0]
+    dp = base + '_leads'
+    lp = base + '_actions'
+    data = WrapScoring(data, dp, lp)
+    return render_template('index.html', data=data.shape)
 
 if __name__ == "__main__":
     app.run(debug=True, threaded=True)

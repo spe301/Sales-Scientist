@@ -1,6 +1,7 @@
 from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
+from sklearn.tree import DecisionTreeClassifier
 
 class Prediction:
 	
@@ -11,7 +12,13 @@ class Prediction:
 
 	def Probability(self, X):
 		path = r'C:\Users\aacjp\Sales-Scientist\clf.pkl'
-		model = joblib.load(path)
+		try:
+			model = joblib.load(path)
+		except:
+			path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+			x = Data().Preprocess(pd.read_csv(path).drop(['Unnamed: 0', 'customer'], axis='columns'))
+			Y = pd.read_csv(path)['customer']
+			model = DecisionTreeClassifier().fit(x, Y)
 		predictions = model.predict_proba(X)[:, 1]
 		temp = pd.DataFrame(predictions)
 		temp.columns = ['probabilities']
@@ -37,7 +44,10 @@ class Prediction:
 	def ScoreLeads(self, X):
 		n = len(X)
 		pr = Prediction()
-		X = Data().Preprocess(X)
+		try:
+			X = Data().Preprocess(X)
+		except:
+			pass
 		update = X
 		probs = np.array(pr.Probability(X))
 		opps = np.array(pr.Opportunity(X))
@@ -76,23 +86,29 @@ class Data:
 		X4 = pd.concat([X3, domains, models, dominantPlatforms], axis='columns')
 		return X4
 
-X = pd.read_csv(r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv').drop(['Unnamed: 0', 'customer'], axis='columns')
+X = pd.read_csv(r'C:\Users\aacjp\Sales-Scientist\datasets\check7.csv')
 
-def WrapScoring(data_path, leads_path):
-	X = pd.read_csv(data_path).drop(['Unnamed: 0', 'customer'], axis='columns')
+def WrapScoring(X, data_path, leads_path):
+	original_path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
 	leads, data = Prediction().ScoreLeads(X)
 	X = data.drop(['customer'], axis='columns')
 	y = data['customer']
 	path = r'C:\Users\aacjp\Sales-Scientist\clf.pkl'
-	model = joblib.load(path)
-	model.fit(X, y) 
-	data.to_csv(path)
-	leads.to_csv(leads_path)
-	print('showing the last 5 results')
-	print('---------------------------')
-	print()
-	return leads.tail(5)
+	try:
+		model = joblib.load(path)
+	except:
+		path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+		x = Data().Preprocess(pd.read_csv(path).drop(['Unnamed: 0', 'customer'], axis='columns'))
+		Y = pd.read_csv(path)['customer']
+		model = DecisionTreeClassifier().fit(x, Y)
+	model.fit(X, y)
+	df = pd.read_csv(original_path)
+	df2 = pd.concat([df, data])
+	#leads.to_csv(leads_path)
+	#data.to_csv(data_path)
+	return df2
 
 
-dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
+#dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+#lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
+#print(WrapScoring(X, dp, lp))
