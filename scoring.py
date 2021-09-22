@@ -90,17 +90,20 @@ class Data:
 X = pd.read_csv(r'C:\Users\aacjp\Sales-Scientist\datasets\check7.csv')
 
 def WrapScoring(X, data_path, leads_path):
+	names = X['name']
+	X = X.drop(['name'], axis='columns')
 	original_path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
 	leads, _ = Prediction().ScoreLeads(X)
 	data = leads.drop(['score', 'action', 'priority'], axis='columns')
 	df = Data().Preprocess(pd.read_csv(original_path))
 	data.columns = list(df.columns)
 	df2 = df.append(data)
+	leads['name'] = names
 	#df2.to_csv(data_path)
 	#leads.to_csv(leads_path)
-	return leads
+	return leads[['name', 'score', 'action', 'priority']]
 
 
-dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
-print(WrapScoring(X, dp, lp))
+#dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+#lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
+#print(WrapScoring(X, dp, lp))
