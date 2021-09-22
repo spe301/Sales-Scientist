@@ -88,8 +88,6 @@ class Data:
 		X4 = pd.concat([X3, domains, models, dominantPlatforms], axis='columns')
 		return X4
 
-X = pd.read_csv('datasets\check7.csv') #this isn't actually supposed to be here
-
 def WrapScoring(X, data_path, leads_path):
 	names = X['name']
 	X = X.drop(['name'], axis='columns')
