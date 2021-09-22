@@ -7,16 +7,16 @@ from sklearn.tree import DecisionTreeClassifier
 class Prediction:
 	
 	def test(self, X):
-		path = r'C:\Users\aacjp\Sales-Scientist\clf.pkl'
+		path = 'clf.pkl'
 		model = joblib.load(path)
 		return model.predict(X)
 
 	def Probability(self, X):
-		path = r'C:\Users\aacjp\Sales-Scientist\clf.pkl'
+		path = 'clf.pkl'
 		try:
 			model = joblib.load(path)
 		except:
-			path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+			path = 'datasets\check6.csv'
 			x = Data().Preprocess(pd.read_csv(path).drop(['customer'], axis='columns'))
 			Y = pd.read_csv(path)['customer']
 			model = DecisionTreeClassifier().fit(x, Y)
@@ -28,7 +28,7 @@ class Prediction:
 		return temp
 
 	def Opportunity(self, X):
-		training_data = pd.read_csv(r'C:\Users\aacjp\Sales-Scientist\datasets\leadsML.csv').drop(['Unnamed: 0'], axis='columns')
+		training_data = pd.read_csv('leadsML.csv').drop(['Unnamed: 0'], axis='columns')
 		mu_cac = np.mean(training_data['cac'])
 		sigma_cac = np.std(training_data['cac'])
 		mu_adspend = np.mean(training_data['adspend'])
@@ -91,7 +91,7 @@ class Data:
 def WrapScoring(X, data_path, leads_path):
 	names = X['name']
 	X = X.drop(['name'], axis='columns')
-	original_path = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
+	original_path = 'datasets\check6.csv'
 	leads, _ = Prediction().ScoreLeads(X)
 	data = leads.drop(['score', 'action', 'priority'], axis='columns')
 	df = Data().Preprocess(pd.read_csv(original_path))
