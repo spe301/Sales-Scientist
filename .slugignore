@@ -1,0 +1,12 @@
+*.ipynb
+*.pdf
+*.sh
+*.md
+*.pkl
+/notebooks
+/scripts
+/.ipynb_checkpoints
+/_pycache_
+/images
+/templates
+/virtualenv_scrappy

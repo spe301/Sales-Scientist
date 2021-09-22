@@ -41,7 +41,7 @@ class Spider2Sql:
     
 class PostsSpider(scrapy.Spider):
     name = 'posts'
-    f = open(r'C:\Users\aacjp\Sales-Scientist\leads.txt').read()
+    f = open(r'C:\Users\aacjp\Sales-Scientist\scripts\leads.txt').read()
     start_urls = f.split(',')[:2] #normally every 5
     
     '''def parse(self, response):
