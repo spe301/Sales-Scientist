@@ -102,6 +102,12 @@ Throughout our dataset we have 3 main types of features. These are qualification
 I've made a dashboard in tableau that helps sales reps visualize the difference between customers and non-customers to better understand their leads/prospects. This current dashboard compares a sample of known customers of Hyros against an equally sized sample of similar businesses that are not customers of Hyros. https://public.tableau.com/app/profile/spencer.holley/viz/HyrosLeadsSample/HyrosLeadsSample
 
 ## model selection
-I'm very early in this project but I've dabbled with a very simple bayseian model that I coded from scratch.
+Ultimatley, the best model was a combination of the DecisionTreeClassifier and a simple heuristic known as opportunity score. Opportunity Score takes in the cac, adspend, and average twitter sentiment polarity of a lead, when opportunity score is high it indicates that there is a lot of opportuntiy for Hyros to help them increase ROAS. The reason for this is that high cac and adspend a sign of a leaky adspend, a problem Hyros is great at solving. Twitter Sentiment represents whether the public thiinks negativley or positivley of the bussiness, we'd prefer to work with businesses that are seen in a positive light. By combining this Heuristic with a Decision Tree model trained on all 56 features produced 100% accuracy. In this situation accuracy means properly labeling businesses as customers or noncustomers
 
-see video here: https://www.youtube.com/watch?v=CaodNoFFX18&t=158s
+## Deployment
+To deploy this application I used a Flask Framework and deployed to Heroku. Because the dataset is so small the model gets rebuilt each time a user gives the application a csv file of leads, at a higher scale I would resort to a cloud solution.
+
+## Limitations
+1. There are only 60 data points. 
+2. only csv files that are uploaded to github as a raw github url will work as inputs. The problem here is that sales reps aren't gonna be on Github.
+3. The dataset overrepresents customers and represents customers vs. non-customers more so than converted leads vs. non-converted leads
