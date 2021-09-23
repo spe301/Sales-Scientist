@@ -16,9 +16,8 @@ def data():
     lp = r'https://raw.githubusercontent.com/spe301/Sales-Scientist/main/prospects.csv'
     path = request.form['Text']
     data = pd.read_csv(path)
-    base = r'https://raw.githubusercontent.com/spe301/Sales-Scientist/main/'
-    dp = base + 'leads.csv'
-    lp = base + 'actions.csv'
+    dp = 'leads.csv'
+    lp = 'actions.csv'
     data = WrapScoring(data, dp, lp)
     return render_template('index2.html', data=data.to_html())
 
