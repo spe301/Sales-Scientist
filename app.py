@@ -12,13 +12,13 @@ def home():
 
 @app.route('/data', methods=['POST'])
 def data():
-    #dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-    #lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
+    dp = r'https://raw.githubusercontent.com/spe301/Sales-Scientist/main/check6.csv'
+    lp = r'https://raw.githubusercontent.com/spe301/Sales-Scientist/main/prospects.csv'
     path = request.form['Text']
     data = pd.read_csv(path)
-    base = path.split('.')[0]
-    dp = base + '_leads'
-    lp = base + '_actions'
+    base = r'https://raw.githubusercontent.com/spe301/Sales-Scientist/main/'
+    dp = base + 'leads.csv'
+    lp = base + 'actions.csv'
     data = WrapScoring(data, dp, lp)
     return render_template('index2.html', data=data.to_html())
 

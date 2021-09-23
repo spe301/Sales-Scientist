@@ -98,11 +98,6 @@ def WrapScoring(X, data_path, leads_path):
 	data.columns = list(df.columns)
 	df2 = df.append(data)
 	leads['name'] = names
-	#df2.to_csv(data_path)
-	#leads.to_csv(leads_path)
+	df2.to_csv(data_path)
+	leads.to_csv(leads_path)
 	return leads[['name', 'score', 'action', 'priority']]
-
-
-#dp = r'C:\Users\aacjp\Sales-Scientist\datasets\check6.csv'
-#lp = r'C:\Users\aacjp\Sales-Scientist\datasets\prospects.csv'
-#print(WrapScoring(X, dp, lp))
